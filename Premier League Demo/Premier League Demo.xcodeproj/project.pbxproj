@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		88B0BFB324C7198000825E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0BFB224C7198000825E6A /* AppDelegate.swift */; };
+		88B0BFB524C7198000825E6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0BFB424C7198000825E6A /* SceneDelegate.swift */; };
+		88B0BFB724C7198000825E6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0BFB624C7198000825E6A /* ViewController.swift */; };
+		88B0BFBA24C7198000825E6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0BFB824C7198000825E6A /* Main.storyboard */; };
+		88B0BFBC24C7198200825E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B0BFBB24C7198200825E6A /* Assets.xcassets */; };
+		88B0BFBF24C7198200825E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B0BFBD24C7198200825E6A /* LaunchScreen.storyboard */; };
+		88B0BFCA24C7198200825E6A /* Premier_League_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0BFC924C7198200825E6A /* Premier_League_DemoTests.swift */; };
+		88B0BFD524C7198300825E6A /* Premier_League_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0BFD424C7198300825E6A /* Premier_League_DemoUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		88B0BFC624C7198200825E6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88B0BFA724C7198000825E6A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88B0BFAE24C7198000825E6A;
+			remoteInfo = "Premier League Demo";
+		};
+		88B0BFD124C7198300825E6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88B0BFA724C7198000825E6A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88B0BFAE24C7198000825E6A;
+			remoteInfo = "Premier League Demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		88B0BFAF24C7198000825E6A /* Premier League Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Premier League Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88B0BFB224C7198000825E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		88B0BFB424C7198000825E6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		88B0BFB624C7198000825E6A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		88B0BFB924C7198000825E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		88B0BFBB24C7198200825E6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		88B0BFBE24C7198200825E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		88B0BFC024C7198200825E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88B0BFC524C7198200825E6A /* Premier League DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Premier League DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88B0BFC924C7198200825E6A /* Premier_League_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Premier_League_DemoTests.swift; sourceTree = "<group>"; };
+		88B0BFCB24C7198200825E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88B0BFD024C7198300825E6A /* Premier League DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Premier League DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88B0BFD424C7198300825E6A /* Premier_League_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Premier_League_DemoUITests.swift; sourceTree = "<group>"; };
+		88B0BFD624C7198300825E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		88B0BFAC24C7198000825E6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88B0BFC224C7198200825E6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88B0BFCD24C7198200825E6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		88B0BFA624C7198000825E6A = {
+			isa = PBXGroup;
+			children = (
+				88B0BFB124C7198000825E6A /* Premier League Demo */,
+				88B0BFC824C7198200825E6A /* Premier League DemoTests */,
+				88B0BFD324C7198300825E6A /* Premier League DemoUITests */,
+				88B0BFB024C7198000825E6A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		88B0BFB024C7198000825E6A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88B0BFAF24C7198000825E6A /* Premier League Demo.app */,
+				88B0BFC524C7198200825E6A /* Premier League DemoTests.xctest */,
+				88B0BFD024C7198300825E6A /* Premier League DemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		88B0BFB124C7198000825E6A /* Premier League Demo */ = {
+			isa = PBXGroup;
+			children = (
+				88B0BFB224C7198000825E6A /* AppDelegate.swift */,
+				88B0BFB424C7198000825E6A /* SceneDelegate.swift */,
+				88B0BFB624C7198000825E6A /* ViewController.swift */,
+				88B0BFB824C7198000825E6A /* Main.storyboard */,
+				88B0BFBB24C7198200825E6A /* Assets.xcassets */,
+				88B0BFBD24C7198200825E6A /* LaunchScreen.storyboard */,
+				88B0BFC024C7198200825E6A /* Info.plist */,
+			);
+			path = "Premier League Demo";
+			sourceTree = "<group>";
+		};
+		88B0BFC824C7198200825E6A /* Premier League DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				88B0BFC924C7198200825E6A /* Premier_League_DemoTests.swift */,
+				88B0BFCB24C7198200825E6A /* Info.plist */,
+			);
+			path = "Premier League DemoTests";
+			sourceTree = "<group>";
+		};
+		88B0BFD324C7198300825E6A /* Premier League DemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				88B0BFD424C7198300825E6A /* Premier_League_DemoUITests.swift */,
+				88B0BFD624C7198300825E6A /* Info.plist */,
+			);
+			path = "Premier League DemoUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		88B0BFAE24C7198000825E6A /* Premier League Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88B0BFD924C7198300825E6A /* Build configuration list for PBXNativeTarget "Premier League Demo" */;
+			buildPhases = (
+				88B0BFAB24C7198000825E6A /* Sources */,
+				88B0BFAC24C7198000825E6A /* Frameworks */,
+				88B0BFAD24C7198000825E6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Premier League Demo";
+			productName = "Premier League Demo";
+			productReference = 88B0BFAF24C7198000825E6A /* Premier League Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		88B0BFC424C7198200825E6A /* Premier League DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88B0BFDC24C7198300825E6A /* Build configuration list for PBXNativeTarget "Premier League DemoTests" */;
+			buildPhases = (
+				88B0BFC124C7198200825E6A /* Sources */,
+				88B0BFC224C7198200825E6A /* Frameworks */,
+				88B0BFC324C7198200825E6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				88B0BFC724C7198200825E6A /* PBXTargetDependency */,
+			);
+			name = "Premier League DemoTests";
+			productName = "Premier League DemoTests";
+			productReference = 88B0BFC524C7198200825E6A /* Premier League DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		88B0BFCF24C7198200825E6A /* Premier League DemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88B0BFDF24C7198300825E6A /* Build configuration list for PBXNativeTarget "Premier League DemoUITests" */;
+			buildPhases = (
+				88B0BFCC24C7198200825E6A /* Sources */,
+				88B0BFCD24C7198200825E6A /* Frameworks */,
+				88B0BFCE24C7198200825E6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				88B0BFD224C7198300825E6A /* PBXTargetDependency */,
+			);
+			name = "Premier League DemoUITests";
+			productName = "Premier League DemoUITests";
+			productReference = 88B0BFD024C7198300825E6A /* Premier League DemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		88B0BFA724C7198000825E6A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Wojciech Wozniak";
+				TargetAttributes = {
+					88B0BFAE24C7198000825E6A = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					88B0BFC424C7198200825E6A = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 88B0BFAE24C7198000825E6A;
+					};
+					88B0BFCF24C7198200825E6A = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 88B0BFAE24C7198000825E6A;
+					};
+				};
+			};
+			buildConfigurationList = 88B0BFAA24C7198000825E6A /* Build configuration list for PBXProject "Premier League Demo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 88B0BFA624C7198000825E6A;
+			productRefGroup = 88B0BFB024C7198000825E6A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				88B0BFAE24C7198000825E6A /* Premier League Demo */,
+				88B0BFC424C7198200825E6A /* Premier League DemoTests */,
+				88B0BFCF24C7198200825E6A /* Premier League DemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		88B0BFAD24C7198000825E6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88B0BFBF24C7198200825E6A /* LaunchScreen.storyboard in Resources */,
+				88B0BFBC24C7198200825E6A /* Assets.xcassets in Resources */,
+				88B0BFBA24C7198000825E6A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88B0BFC324C7198200825E6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88B0BFCE24C7198200825E6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		88B0BFAB24C7198000825E6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88B0BFB724C7198000825E6A /* ViewController.swift in Sources */,
+				88B0BFB324C7198000825E6A /* AppDelegate.swift in Sources */,
+				88B0BFB524C7198000825E6A /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88B0BFC124C7198200825E6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88B0BFCA24C7198200825E6A /* Premier_League_DemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88B0BFCC24C7198200825E6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88B0BFD524C7198300825E6A /* Premier_League_DemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		88B0BFC724C7198200825E6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 88B0BFAE24C7198000825E6A /* Premier League Demo */;
+			targetProxy = 88B0BFC624C7198200825E6A /* PBXContainerItemProxy */;
+		};
+		88B0BFD224C7198300825E6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 88B0BFAE24C7198000825E6A /* Premier League Demo */;
+			targetProxy = 88B0BFD124C7198300825E6A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		88B0BFB824C7198000825E6A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88B0BFB924C7198000825E6A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		88B0BFBD24C7198200825E6A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88B0BFBE24C7198200825E6A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		88B0BFD724C7198300825E6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		88B0BFD824C7198300825E6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		88B0BFDA24C7198300825E6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W3DNCXNJ64;
+				INFOPLIST_FILE = "Premier League Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wowo.Premier-League-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		88B0BFDB24C7198300825E6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W3DNCXNJ64;
+				INFOPLIST_FILE = "Premier League Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wowo.Premier-League-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		88B0BFDD24C7198300825E6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W3DNCXNJ64;
+				INFOPLIST_FILE = "Premier League DemoTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wowo.Premier-League-DemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Premier League Demo.app/Premier League Demo";
+			};
+			name = Debug;
+		};
+		88B0BFDE24C7198300825E6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W3DNCXNJ64;
+				INFOPLIST_FILE = "Premier League DemoTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wowo.Premier-League-DemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Premier League Demo.app/Premier League Demo";
+			};
+			name = Release;
+		};
+		88B0BFE024C7198300825E6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W3DNCXNJ64;
+				INFOPLIST_FILE = "Premier League DemoUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wowo.Premier-League-DemoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Premier League Demo";
+			};
+			name = Debug;
+		};
+		88B0BFE124C7198300825E6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W3DNCXNJ64;
+				INFOPLIST_FILE = "Premier League DemoUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wowo.Premier-League-DemoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Premier League Demo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		88B0BFAA24C7198000825E6A /* Build configuration list for PBXProject "Premier League Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88B0BFD724C7198300825E6A /* Debug */,
+				88B0BFD824C7198300825E6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88B0BFD924C7198300825E6A /* Build configuration list for PBXNativeTarget "Premier League Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88B0BFDA24C7198300825E6A /* Debug */,
+				88B0BFDB24C7198300825E6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88B0BFDC24C7198300825E6A /* Build configuration list for PBXNativeTarget "Premier League DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88B0BFDD24C7198300825E6A /* Debug */,
+				88B0BFDE24C7198300825E6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88B0BFDF24C7198300825E6A /* Build configuration list for PBXNativeTarget "Premier League DemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88B0BFE024C7198300825E6A /* Debug */,
+				88B0BFE124C7198300825E6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 88B0BFA724C7198000825E6A /* Project object */;
+}
