@@ -9,18 +9,18 @@
 import UIKit
 
 protocol LeagueTableBusinessLogic {
-
+    func prepareContent(request: LeagueTable.Content.Request)
 }
 
-protocol LeagueTableDataStore {
-
+protocol LeagueTableDataStore: class {
+    var gateway: Gateway? { get set }
 }
 
 class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
 
-    // MARK: - DataStore
-
     // MARK: - LeagueTableDataStore
+
+    var gateway: Gateway?
 
     // MARK: - Internal properties
 
@@ -34,5 +34,13 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
     }
 
     // MARK: - LeagueTableBusinessLogic
-    
+
+    func prepareContent(request: LeagueTable.Content.Request) {
+        worker?.gateway = gateway
+        worker?.getLeagueTable(completion: { [weak self] (leagueTable) in
+            let sortedLeagueTable = leagueTable.sorted { $0.position < $1.position }
+            let response = LeagueTable.Content.Response(leagueTable: sortedLeagueTable)
+            self?.presenter?.presentContent(response: response)
+        })
+    }
 }

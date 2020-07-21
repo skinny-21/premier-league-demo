@@ -9,5 +9,19 @@
 import UIKit
 
 enum LeagueTable {
+    enum Content {
+        struct Request {
 
+        }
+
+        struct Response {
+            let leagueTable: [LeagueTableTeam]
+        }
+
+        struct ViewModel {
+            let cellViewModels: [LeagueTeamTableCellViewModel]
+            let shouldShowEmptyStateMessage: Bool
+            let emptyStateMessage: String
+        }
+    }
 }

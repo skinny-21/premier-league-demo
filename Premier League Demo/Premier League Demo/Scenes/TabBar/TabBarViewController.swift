@@ -14,6 +14,8 @@ protocol TabBarDisplayLogic: class {
 
 class TabBarViewController: UITabBarController, TabBarDisplayLogic {
 
+    private var gateway: Gateway?
+
     // MARK: - TabBarViewController - Internal properties
 
     var interactor: TabBarBusinessLogic?
@@ -23,8 +25,10 @@ class TabBarViewController: UITabBarController, TabBarDisplayLogic {
 
     // MARK: - Initialization
 
-    convenience init() {
+    convenience init(gateway: Gateway) {
         self.init(nibName: nil, bundle: nil)
+        self.gateway = gateway
+        self.setupViewControllers()
     }
 
     override private init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -58,16 +62,23 @@ class TabBarViewController: UITabBarController, TabBarDisplayLogic {
 
     // MARK: - Subviews setup
 
-    func setup() {
+    private func setup() {
+        view.backgroundColor = .background
+    }
+
+    private func setupViewControllers() {
         let leagueTableTabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 0)
         let leagueTableViewController = LeagueTableViewController()
+        leagueTableViewController.router?.dataStore?.gateway = gateway
         leagueTableViewController.tabBarItem = leagueTableTabBarItem
 
         let favouriteTeamsTabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         let favouriteTeamsViewController = FavouriteTeamsViewController()
         favouriteTeamsViewController.tabBarItem = favouriteTeamsTabBarItem
 
-        viewControllers = [leagueTableViewController, favouriteTeamsViewController]
+        viewControllers = [leagueTableViewController, favouriteTeamsViewController].map {
+            UINavigationController(rootViewController: $0)
+        }
     }
 
     // MARK: - TabBarDisplayLogic

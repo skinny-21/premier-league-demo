@@ -9,10 +9,24 @@
 import UIKit
 
 protocol LeagueTableWorkerProtocol {
-
+    var gateway: Gateway? { get set }
+    func getLeagueTable(completion: @escaping ([LeagueTableTeam]) -> Void)
 }
 
 class LeagueTableWorker: LeagueTableWorkerProtocol {
 
     // MARK: - LeagueTableWorkerProtocol
+
+    var gateway: Gateway?
+
+    func getLeagueTable(completion: @escaping ([LeagueTableTeam]) -> Void) {
+        guard let gateway = gateway else {
+            completion([])
+            return
+        }
+
+        gateway.getLeagueTable { (response, _) in
+            completion(response?.data.leagueTable ?? [])
+        }
+    }
 }

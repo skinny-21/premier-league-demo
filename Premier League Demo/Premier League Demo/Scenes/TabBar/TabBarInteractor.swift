@@ -18,8 +18,6 @@ protocol TabBarDataStore {
 
 class TabBarInteractor: TabBarBusinessLogic, TabBarDataStore {
 
-    // MARK: - DataStore
-
     // MARK: - TabBarDataStore
 
     // MARK: - Internal properties

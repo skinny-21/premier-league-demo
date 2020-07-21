@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol LeagueTableRoutingLogic {
+protocol LeagueTableRoutingLogic: class {
 
 }
 
-protocol LeagueTableDataPassing {
+protocol LeagueTableDataPassing: class {
     var dataStore: LeagueTableDataStore? { get }
 }
 
