@@ -9,5 +9,5 @@
 import Foundation
 
 struct LeagueTableData: Decodable {
-    let leagueTable: [LeagueTableTeam]
+    let leagueTable: [LeagueTableTeamResponse]
 }

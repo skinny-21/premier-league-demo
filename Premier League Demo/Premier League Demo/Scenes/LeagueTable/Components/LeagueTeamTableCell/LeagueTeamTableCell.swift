@@ -31,14 +31,22 @@ class LeagueTeamTableCell: UITableViewCell {
         pointsLabel.text = viewModel.points
     }
 
+    func setImage(_ image: UIImage?) {
+        logoImageView.image = image
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
+        setDefaultAppearance()
+    }
+
+    private func setDefaultAppearance() {
         contentView.backgroundColor = .background
+        logoImageView.image = .placeholder
     }
 
     private func setup() {
-        logoImageView.backgroundColor = .primary
-        contentView.backgroundColor = .background
+        setDefaultAppearance()
 
         [positionLabel, logoImageView, nameLabel, pointsLabel].forEach {
             contentView.addSubview($0)
@@ -71,4 +79,8 @@ class LeagueTeamTableCell: UITableViewCell {
             pointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4)
         ])
     }
+}
+
+private extension UIImage {
+    static let placeholder = UIImage(named: "team_logo_placeholder")
 }

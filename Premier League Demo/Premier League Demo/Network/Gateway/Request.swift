@@ -23,7 +23,9 @@ class Request<Response: APIResponse>: APIRequest {
 
     @discardableResult
     func makeRequest(with completionHandler: @escaping ResponseHandler<Response.ResponseType>) -> URLSessionDataTask? {
+        log.request(urlRequest)
         if let cachedData = urlCache?.cachedResponse(for: urlRequest)?.data, let cachedResult = result(for: cachedData) {
+            log.cached(urlRequest, "\(cachedResult)")
             completionHandler(cachedResult, nil)
             return nil
         }
@@ -35,7 +37,10 @@ class Request<Response: APIResponse>: APIRequest {
 
     private func dataTask(with completionHandler: @escaping ResponseHandler<Response.ResponseType>) -> URLSessionDataTask {
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
+            log.response(response, for: self.urlRequest, with: data)
+
             if let error = error {
+                log.error(error)
                 return completionHandler(nil, error)
             }
 
@@ -44,6 +49,7 @@ class Request<Response: APIResponse>: APIRequest {
             }
 
             guard let data = data, data.count > 0 else {
+                log.error(error)
                 return completionHandler(nil, error)
             }
 
@@ -52,6 +58,7 @@ class Request<Response: APIResponse>: APIRequest {
                 self.cache(response: response, data: data, for: self.urlRequest)
                 return completionHandler(result, nil)
             } catch {
+                log.error(error)
                 return completionHandler(nil, error)
             }
         }

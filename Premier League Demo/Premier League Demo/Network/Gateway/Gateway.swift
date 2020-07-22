@@ -10,5 +10,5 @@ import Foundation
 
 protocol Gateway {
     func getLeagueTable(completionHandler: @escaping ResponseHandler<LeagueTableResponse>)
-    func getTeamImage(teamURLString: String, completionHandler: @escaping ResponseHandler<Data>)
+    func getImage(url: URL, completionHandler: @escaping ResponseHandler<Data>)
 }

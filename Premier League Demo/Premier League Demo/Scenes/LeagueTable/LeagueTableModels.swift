@@ -10,12 +10,10 @@ import UIKit
 
 enum LeagueTable {
     enum Content {
-        struct Request {
-
-        }
+        struct Request {}
 
         struct Response {
-            let leagueTable: [LeagueTableTeam]
+            let leagueTable: [TeamModel]
         }
 
         struct ViewModel {
@@ -23,5 +21,33 @@ enum LeagueTable {
             let shouldShowEmptyStateMessage: Bool
             let emptyStateMessage: String
         }
+    }
+
+    enum TeamImage {
+        struct Request {
+            let index: Int
+        }
+
+        struct Response {
+            let index: Int
+            let imageData: Data?
+        }
+
+        struct ViewModel {
+            let index: Int
+            let image: UIImage?
+        }
+    }
+
+    struct TeamModel {
+        let id: Int
+        let position: Int
+        let seasonGoals: Int
+        let points: Int
+        let seasonGoalDifference: Int
+        let matchesPlayed: Int
+        let name: String
+        let cleanName: String
+        let imageURL: URL?
     }
 }

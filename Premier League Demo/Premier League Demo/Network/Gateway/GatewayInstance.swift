@@ -47,15 +47,7 @@ extension GatewayInstance: Gateway {
         makeJSONRequest(urlRequest: urlRequest, apiResponse: JSONResponse(), completionHandler: completionHandler)
     }
 
-    func getTeamImage(teamURLString: String, completionHandler: @escaping ResponseHandler<Data>) {
-        let cdnURL = URL(string: "https://cdn.footystats.org/img/teams")
-        let imagePath = teamURLString.split(separator: "/").suffix(2).joined(separator: "-").appending(".png")
-
-        guard let url = cdnURL?.appendingPathComponent(imagePath) else {
-            completionHandler(nil, nil)
-            return
-        }
-
+    func getImage(url: URL, completionHandler: @escaping ResponseHandler<Data>) {
         let urlRequest = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
         makeJSONRequest(urlRequest: urlRequest, apiResponse: DataResponse(), completionHandler: completionHandler, urlCache: urlCache)
     }

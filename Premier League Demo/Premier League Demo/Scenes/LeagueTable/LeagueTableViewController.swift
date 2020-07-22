@@ -10,6 +10,7 @@ import UIKit
 
 protocol LeagueTableDisplayLogic: class {
     func displayContent(viewModel: LeagueTable.Content.ViewModel)
+    func displayTeamImage(viewModel: LeagueTable.TeamImage.ViewModel)
 }
 
 class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Loadable {
@@ -104,6 +105,15 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
         }
     }
 
+    func displayTeamImage(viewModel: LeagueTable.TeamImage.ViewModel) {
+        DispatchQueue.main.async {
+            let cell = self.tableView.cellForRow(at: IndexPath(row: viewModel.index, section: 0))
+            if let leagueTeamCell = cell as? LeagueTeamTableCell {
+                leagueTeamCell.setImage(viewModel.image)
+            }
+        }
+    }
+
     // MARK: - View Controller Logic
 
     private func prepareContent() {
@@ -127,6 +137,7 @@ extension LeagueTableViewController: UITableViewDataSource {
             }
         }
 
+        interactor?.getTeamImage(request: LeagueTable.TeamImage.Request(index: indexPath.row))
         return cell
     }
 
@@ -137,7 +148,7 @@ extension LeagueTableViewController: UITableViewDataSource {
 
 extension LeagueTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        32
+        48
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

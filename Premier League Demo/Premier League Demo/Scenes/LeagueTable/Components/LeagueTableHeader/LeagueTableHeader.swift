@@ -59,7 +59,6 @@ class LeagueTableHeader: UITableViewHeaderFooterView {
 
             pointsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             pointsLabel.widthAnchor.constraint(equalToConstant: 24),
-            pointsLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 8),
             pointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4)
         ])
     }

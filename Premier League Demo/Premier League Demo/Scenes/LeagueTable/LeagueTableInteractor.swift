@@ -10,6 +10,7 @@ import UIKit
 
 protocol LeagueTableBusinessLogic {
     func prepareContent(request: LeagueTable.Content.Request)
+    func getTeamImage(request: LeagueTable.TeamImage.Request)
 }
 
 protocol LeagueTableDataStore: class {
@@ -27,6 +28,10 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
     var presenter: LeagueTablePresentationLogic?
     var worker: LeagueTableWorkerProtocol?
 
+    // MARK: - Private properties
+
+    private var leagueTable = [LeagueTable.TeamModel]()
+
     // MARK: - Initialization
 
     init(worker: LeagueTableWorkerProtocol = LeagueTableWorker()) {
@@ -38,9 +43,21 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
     func prepareContent(request: LeagueTable.Content.Request) {
         worker?.gateway = gateway
         worker?.getLeagueTable(completion: { [weak self] (leagueTable) in
-            let sortedLeagueTable = leagueTable.sorted { $0.position < $1.position }
-            let response = LeagueTable.Content.Response(leagueTable: sortedLeagueTable)
-            self?.presenter?.presentContent(response: response)
+            guard let self = self else { return }
+            self.leagueTable = leagueTable.sorted { $0.position < $1.position }
+            let response = LeagueTable.Content.Response(leagueTable: self.leagueTable)
+            self.presenter?.presentContent(response: response)
+        })
+    }
+
+    func getTeamImage(request: LeagueTable.TeamImage.Request) {
+        guard leagueTable.indices.contains(request.index), let imageURL = leagueTable[request.index].imageURL else {
+            return
+        }
+
+        worker?.getImage(url: imageURL, completion: { [weak self] data in
+            let response = LeagueTable.TeamImage.Response(index: request.index, imageData: data)
+            self?.presenter?.presentTeamImage(response: response)
         })
     }
 }

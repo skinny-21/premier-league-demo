@@ -10,6 +10,7 @@ import UIKit
 
 protocol LeagueTablePresentationLogic {
     func presentContent(response: LeagueTable.Content.Response)
+    func presentTeamImage(response: LeagueTable.TeamImage.Response)
 }
 
 class LeagueTablePresenter: LeagueTablePresentationLogic {
@@ -29,5 +30,16 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
                                                       shouldShowEmptyStateMessage: response.leagueTable.isEmpty,
                                                       emptyStateMessage: "Error")
         viewController?.displayContent(viewModel: viewModel)
+    }
+
+    func presentTeamImage(response: LeagueTable.TeamImage.Response) {
+        var image: UIImage?
+
+        if let imageData = response.imageData {
+            image = UIImage(data: imageData)
+        }
+
+        let viewModel = LeagueTable.TeamImage.ViewModel(index: response.index, image: image)
+        viewController?.displayTeamImage(viewModel: viewModel)
     }
 }
