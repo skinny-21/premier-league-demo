@@ -44,6 +44,7 @@ class LeagueTableWorker: LeagueTableWorkerProtocol {
                                              matchesPlayed: $0.matchesPlayed,
                                              name: $0.name,
                                              cleanName: $0.cleanName,
+                                             isFavourite: false,
                                              imageURL: imageURL)
             }
             completion(teamsModels)

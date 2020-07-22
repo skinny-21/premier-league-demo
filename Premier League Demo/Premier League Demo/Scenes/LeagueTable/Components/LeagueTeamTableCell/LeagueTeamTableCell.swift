@@ -11,12 +11,16 @@ import UIKit
 class LeagueTeamTableCell: UITableViewCell {
     static let reuseIdentifier = String(describing: LeagueTeamTableCell.self)
 
+    weak var delegate: LeagueTeamTableCellDelegate?
+
+    private var id = -1
     private let positionLabel = UILabel()
     private let logoImageView = UIImageView()
     private let nameLabel = UILabel()
     private let matchesPlayedLabel = UILabel()
     private let goalsLabel = UILabel()
     private let pointsLabel = UILabel()
+    private let favouritesButton = UIButton()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,11 +32,13 @@ class LeagueTeamTableCell: UITableViewCell {
     }
 
     func setViewModel(_ viewModel: LeagueTeamTableCellViewModel) {
+        id = viewModel.id
         positionLabel.text = viewModel.positon
         nameLabel.text = viewModel.name
         matchesPlayedLabel.text = viewModel.matchesPlayed
         goalsLabel.text = viewModel.goals
         pointsLabel.text = viewModel.points
+        favouritesButton.isSelected = viewModel.isFavourite
     }
 
     func setImage(_ image: UIImage?) {
@@ -41,6 +47,7 @@ class LeagueTeamTableCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        id = -1
         setDefaultAppearance()
     }
 
@@ -52,7 +59,7 @@ class LeagueTeamTableCell: UITableViewCell {
     private func setup() {
         setDefaultAppearance()
 
-        [positionLabel, logoImageView, nameLabel, matchesPlayedLabel, goalsLabel, pointsLabel].forEach {
+        [positionLabel, logoImageView, nameLabel, matchesPlayedLabel, goalsLabel, pointsLabel, favouritesButton].forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -61,6 +68,10 @@ class LeagueTeamTableCell: UITableViewCell {
             $0.textAlignment = .center
             $0.setTextStyle(.text)
         }
+
+        favouritesButton.setImage(UIImage(named: "fav_deselected"), for: .normal)
+        favouritesButton.setImage(UIImage(named: "fav_selected"), for: .selected)
+        favouritesButton.addTarget(self, action: #selector(favouritesButtonAction), for: .touchUpInside)
 
         nameLabel.setTextStyle(.textLeading)
 
@@ -88,8 +99,18 @@ class LeagueTeamTableCell: UITableViewCell {
             pointsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             pointsLabel.widthAnchor.constraint(equalToConstant: 24),
             pointsLabel.leadingAnchor.constraint(equalTo: goalsLabel.trailingAnchor),
-            pointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4)
+
+            favouritesButton.topAnchor.constraint(equalTo: contentView.topAnchor),
+            favouritesButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            favouritesButton.leadingAnchor.constraint(equalTo: pointsLabel.trailingAnchor),
+            favouritesButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            favouritesButton.widthAnchor.constraint(equalToConstant: 48)
         ])
+    }
+
+    @objc
+    private func favouritesButtonAction() {
+        delegate?.leagueTeamTableCell(self, favouritesButtonTappedFor: id)
     }
 }
 

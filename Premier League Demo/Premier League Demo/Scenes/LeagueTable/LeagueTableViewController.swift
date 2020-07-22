@@ -132,6 +132,7 @@ extension LeagueTableViewController: UITableViewDataSource {
 
         if let leagueTeamCell = cell as? LeagueTeamTableCell {
             leagueTeamCell.setViewModel(cellViewModels[indexPath.row])
+            leagueTeamCell.delegate = self
             if indexPath.row % 2 != 0 {
                 leagueTeamCell.contentView.backgroundColor = .selection
             }
@@ -153,5 +154,11 @@ extension LeagueTableViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         32
+    }
+}
+
+extension LeagueTableViewController: LeagueTeamTableCellDelegate {
+    func leagueTeamTableCell(_ cell: LeagueTeamTableCell, favouritesButtonTappedFor id: Int) {
+        print(id)
     }
 }

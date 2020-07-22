@@ -48,6 +48,7 @@ enum LeagueTable {
         let matchesPlayed: Int
         let name: String
         let cleanName: String
+        let isFavourite: Bool
         let imageURL: URL?
     }
 }

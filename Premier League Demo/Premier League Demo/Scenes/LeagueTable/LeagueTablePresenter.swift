@@ -24,11 +24,14 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
     func presentContent(response: LeagueTable.Content.Response) {
         let cellViewModels: [LeagueTeamTableCellViewModel] = response.leagueTable.map {
             let goalsAgainst = $0.seasonGoals - $0.seasonGoalDifference
-            return LeagueTeamTableCellViewModel(positon: "\($0.position).",
-                                         name: $0.cleanName,
-                                         matchesPlayed: "\($0.matchesPlayed)",
-                                         goals: "\($0.seasonGoals):\(goalsAgainst)",
-                                         points: "\($0.points)")
+            return LeagueTeamTableCellViewModel(
+                id: $0.id,
+                positon: "\($0.position).",
+                name: $0.cleanName,
+                matchesPlayed: "\($0.matchesPlayed)",
+                goals: "\($0.seasonGoals):\(goalsAgainst)",
+                points: "\($0.points)",
+                isFavourite: $0.isFavourite)
         }
 
         let viewModel = LeagueTable.Content.ViewModel(cellViewModels: cellViewModels,

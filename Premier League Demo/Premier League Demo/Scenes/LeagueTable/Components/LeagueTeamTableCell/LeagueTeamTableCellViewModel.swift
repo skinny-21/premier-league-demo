@@ -9,9 +9,11 @@
 import Foundation
 
 struct LeagueTeamTableCellViewModel {
+    let id: Int
     let positon: String
     let name: String
     let matchesPlayed: String
     let goals: String
     let points: String
+    let isFavourite: Bool
 }

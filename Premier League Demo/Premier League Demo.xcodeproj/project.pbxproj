@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		883E977F24C8D6DC008DB40B /* LeagueTeamTableCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883E977E24C8D6DC008DB40B /* LeagueTeamTableCellDelegate.swift */; };
 		88A3049724C76A29005C0609 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3049624C76A29005C0609 /* TextStyle.swift */; };
 		88A3049924C76A9C005C0609 /* UILabel+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3049824C76A9C005C0609 /* UILabel+TextStyle.swift */; };
 		88A3049B24C76AC3005C0609 /* TextStyleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3049A24C76AC3005C0609 /* TextStyleConfig.swift */; };
@@ -71,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		883E977E24C8D6DC008DB40B /* LeagueTeamTableCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTeamTableCellDelegate.swift; sourceTree = "<group>"; };
 		88A3049624C76A29005C0609 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		88A3049824C76A9C005C0609 /* UILabel+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+TextStyle.swift"; sourceTree = "<group>"; };
 		88A3049A24C76AC3005C0609 /* TextStyleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyleConfig.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 			children = (
 				88D7E24724C760DD00C728F7 /* LeagueTeamTableCell.swift */,
 				88D7E24924C760EC00C728F7 /* LeagueTeamTableCellViewModel.swift */,
+				883E977E24C8D6DC008DB40B /* LeagueTeamTableCellDelegate.swift */,
 			);
 			path = LeagueTeamTableCell;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				88A3049924C76A9C005C0609 /* UILabel+TextStyle.swift in Sources */,
 				88B0C01324C72F2700825E6A /* JSONResponse.swift in Sources */,
 				88B0C01624C7302500825E6A /* Logger.swift in Sources */,
+				883E977F24C8D6DC008DB40B /* LeagueTeamTableCellDelegate.swift in Sources */,
 				88B0BFB324C7198000825E6A /* AppDelegate.swift in Sources */,
 				88B0C00F24C7292400825E6A /* GatewayInstance.swift in Sources */,
 				88A3049B24C76AC3005C0609 /* TextStyleConfig.swift in Sources */,
