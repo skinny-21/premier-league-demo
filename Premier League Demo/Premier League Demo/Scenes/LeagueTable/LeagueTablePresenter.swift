@@ -22,8 +22,13 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
     // MARK: - LeagueTablePresentationLogic
 
     func presentContent(response: LeagueTable.Content.Response) {
-        let cellViewModels = response.leagueTable.map {
-            LeagueTeamTableCellViewModel(positon: "\($0.position).", name: $0.cleanName, points: "\($0.points)")
+        let cellViewModels: [LeagueTeamTableCellViewModel] = response.leagueTable.map {
+            let goalsAgainst = $0.seasonGoals - $0.seasonGoalDifference
+            return LeagueTeamTableCellViewModel(positon: "\($0.position).",
+                                         name: $0.cleanName,
+                                         matchesPlayed: "\($0.matchesPlayed)",
+                                         goals: "\($0.seasonGoals):\(goalsAgainst)",
+                                         points: "\($0.points)")
         }
 
         let viewModel = LeagueTable.Content.ViewModel(cellViewModels: cellViewModels,

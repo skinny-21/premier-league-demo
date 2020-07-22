@@ -14,6 +14,8 @@ class LeagueTableHeader: UITableViewHeaderFooterView {
     private let background = UIView()
     private let positionLabel = UILabel()
     private let nameLabel = UILabel()
+    private let matchesPlayedLabel = UILabel()
+    private let goalsLabel = UILabel()
     private let pointsLabel = UILabel()
 
     override init(reuseIdentifier: String?) {
@@ -30,19 +32,21 @@ class LeagueTableHeader: UITableViewHeaderFooterView {
         background.translatesAutoresizingMaskIntoConstraints = false
         background.backgroundColor = .selection
 
-        [positionLabel, nameLabel, pointsLabel].forEach {
+        [positionLabel, nameLabel, matchesPlayedLabel, goalsLabel, pointsLabel].forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.setTextStyle(.text)
         }
 
-        [positionLabel, pointsLabel].forEach {
+        [positionLabel, matchesPlayedLabel, goalsLabel, pointsLabel].forEach {
             $0.textAlignment = .center
         }
 
         positionLabel.text = "#"
         nameLabel.text = "Team"
-        pointsLabel.text = "P"
+        matchesPlayedLabel.text = "P"
+        goalsLabel.text = "G"
+        pointsLabel.text = "Pts"
 
         NSLayoutConstraint.activate([
             background.topAnchor.constraint(equalTo: topAnchor),
@@ -56,6 +60,14 @@ class LeagueTableHeader: UITableViewHeaderFooterView {
 
             nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: positionLabel.trailingAnchor, constant: 0),
+
+            matchesPlayedLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            matchesPlayedLabel.widthAnchor.constraint(equalToConstant: 24),
+            matchesPlayedLabel.trailingAnchor.constraint(equalTo: goalsLabel.leadingAnchor),
+
+            goalsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            goalsLabel.widthAnchor.constraint(equalToConstant: 48),
+            goalsLabel.trailingAnchor.constraint(equalTo: pointsLabel.leadingAnchor),
 
             pointsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             pointsLabel.widthAnchor.constraint(equalToConstant: 24),

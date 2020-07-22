@@ -11,5 +11,7 @@ import Foundation
 struct LeagueTeamTableCellViewModel {
     let positon: String
     let name: String
+    let matchesPlayed: String
+    let goals: String
     let points: String
 }

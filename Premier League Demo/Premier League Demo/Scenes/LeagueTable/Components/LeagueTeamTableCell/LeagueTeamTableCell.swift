@@ -14,6 +14,8 @@ class LeagueTeamTableCell: UITableViewCell {
     private let positionLabel = UILabel()
     private let logoImageView = UIImageView()
     private let nameLabel = UILabel()
+    private let matchesPlayedLabel = UILabel()
+    private let goalsLabel = UILabel()
     private let pointsLabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -28,6 +30,8 @@ class LeagueTeamTableCell: UITableViewCell {
     func setViewModel(_ viewModel: LeagueTeamTableCellViewModel) {
         positionLabel.text = viewModel.positon
         nameLabel.text = viewModel.name
+        matchesPlayedLabel.text = viewModel.matchesPlayed
+        goalsLabel.text = viewModel.goals
         pointsLabel.text = viewModel.points
     }
 
@@ -48,12 +52,12 @@ class LeagueTeamTableCell: UITableViewCell {
     private func setup() {
         setDefaultAppearance()
 
-        [positionLabel, logoImageView, nameLabel, pointsLabel].forEach {
+        [positionLabel, logoImageView, nameLabel, matchesPlayedLabel, goalsLabel, pointsLabel].forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        [positionLabel, pointsLabel].forEach {
+        [positionLabel, matchesPlayedLabel, goalsLabel, pointsLabel].forEach {
             $0.textAlignment = .center
             $0.setTextStyle(.text)
         }
@@ -62,20 +66,28 @@ class LeagueTeamTableCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             positionLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            positionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            positionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             positionLabel.widthAnchor.constraint(equalToConstant: 24),
 
             logoImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            logoImageView.leadingAnchor.constraint(equalTo: positionLabel.trailingAnchor, constant: 0),
+            logoImageView.leadingAnchor.constraint(equalTo: positionLabel.trailingAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 24),
             logoImageView.heightAnchor.constraint(equalToConstant: 24),
 
             nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: 8),
 
+            matchesPlayedLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            matchesPlayedLabel.widthAnchor.constraint(equalToConstant: 24),
+            matchesPlayedLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 8),
+
+            goalsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            goalsLabel.widthAnchor.constraint(equalToConstant: 48),
+            goalsLabel.leadingAnchor.constraint(equalTo: matchesPlayedLabel.trailingAnchor),
+
             pointsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             pointsLabel.widthAnchor.constraint(equalToConstant: 24),
-            pointsLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 8),
+            pointsLabel.leadingAnchor.constraint(equalTo: goalsLabel.trailingAnchor),
             pointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4)
         ])
     }
