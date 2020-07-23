@@ -67,16 +67,17 @@ class TabBarViewController: UITabBarController, TabBarDisplayLogic {
     }
 
     private func setupViewControllers() {
-        let leagueTableTabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 0)
+        let leagueTableTabBarItem = UITabBarItem(title: "TABLE", image: UIImage(named: "tab_bar_table"), selectedImage: nil)
         let leagueTableViewController = LeagueTableViewController()
         leagueTableViewController.router?.dataStore?.gateway = gateway
         leagueTableViewController.tabBarItem = leagueTableTabBarItem
 
-        let favouriteTeamsTabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        let favouriteTeamsViewController = AllTeamsViewController()
-        favouriteTeamsViewController.tabBarItem = favouriteTeamsTabBarItem
+        let allTeamsTabBarItem = UITabBarItem(title: "TEAMS", image: UIImage(named: "tab_bar_teams"), selectedImage: nil)
+        let allTeamsViewController = AllTeamsViewController()
+        allTeamsViewController.tabBarItem = allTeamsTabBarItem
 
-        viewControllers = [leagueTableViewController, favouriteTeamsViewController].map {
+        tabBar.tintColor = .accent
+        viewControllers = [leagueTableViewController, allTeamsViewController].map {
             UINavigationController(rootViewController: $0)
         }
     }
