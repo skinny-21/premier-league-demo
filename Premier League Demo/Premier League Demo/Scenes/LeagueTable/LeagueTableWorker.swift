@@ -20,13 +20,23 @@ class LeagueTableWorker: LeagueTableWorkerProtocol {
 
     var gateway: Gateway?
 
+    // MARK: - Private properties
+
+    private let localStorage: LocalStorage
+
+    init(localStorage: LocalStorage = UserDefaultsStorage()) {
+        self.localStorage = localStorage
+    }
+
     func getLeagueTable(completion: @escaping ([LeagueTable.TeamModel]) -> Void) {
         guard let gateway = gateway else {
             completion([])
             return
         }
 
-        gateway.getLeagueTable { (response, _) in
+        gateway.getLeagueTable { [weak self] (response, _) in
+            guard let self = self else { return }
+
             guard let leagueTable = response?.data.leagueTable else {
                 completion([])
                 return
@@ -44,7 +54,7 @@ class LeagueTableWorker: LeagueTableWorkerProtocol {
                                              matchesPlayed: $0.matchesPlayed,
                                              name: $0.name,
                                              cleanName: $0.cleanName,
-                                             isFavourite: false,
+                                             isFavourite: self.localStorage.isFavourite(id: $0.id),
                                              imageURL: imageURL)
             }
             completion(teamsModels)

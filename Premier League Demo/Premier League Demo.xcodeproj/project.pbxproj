@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		883E977F24C8D6DC008DB40B /* LeagueTeamTableCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883E977E24C8D6DC008DB40B /* LeagueTeamTableCellDelegate.swift */; };
+		883E978224C96E06008DB40B /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883E978124C96E06008DB40B /* LocalStorage.swift */; };
+		883E978424C96E1A008DB40B /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883E978324C96E1A008DB40B /* UserDefaultsStorage.swift */; };
 		88A3049724C76A29005C0609 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3049624C76A29005C0609 /* TextStyle.swift */; };
 		88A3049924C76A9C005C0609 /* UILabel+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3049824C76A9C005C0609 /* UILabel+TextStyle.swift */; };
 		88A3049B24C76AC3005C0609 /* TextStyleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3049A24C76AC3005C0609 /* TextStyleConfig.swift */; };
@@ -73,6 +75,8 @@
 
 /* Begin PBXFileReference section */
 		883E977E24C8D6DC008DB40B /* LeagueTeamTableCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTeamTableCellDelegate.swift; sourceTree = "<group>"; };
+		883E978124C96E06008DB40B /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		883E978324C96E1A008DB40B /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 		88A3049624C76A29005C0609 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		88A3049824C76A9C005C0609 /* UILabel+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+TextStyle.swift"; sourceTree = "<group>"; };
 		88A3049A24C76AC3005C0609 /* TextStyleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyleConfig.swift; sourceTree = "<group>"; };
@@ -150,6 +154,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		883E978024C96DF5008DB40B /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				883E978124C96E06008DB40B /* LocalStorage.swift */,
+				883E978324C96E1A008DB40B /* UserDefaultsStorage.swift */,
+			);
+			path = LocalStorage;
+			sourceTree = "<group>";
+		};
 		88B0BFA624C7198000825E6A = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +328,7 @@
 		88D7E24224C75D5000C728F7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				883E978024C96DF5008DB40B /* LocalStorage */,
 				88D7E24324C75D6300C728F7 /* Loadable.swift */,
 				88A3049624C76A29005C0609 /* TextStyle.swift */,
 				88A3049824C76A9C005C0609 /* UILabel+TextStyle.swift */,
@@ -510,10 +524,12 @@
 				88B0C00824C7214400825E6A /* FavouriteTeamsViewController.swift in Sources */,
 				88D7E23724C74B8B00C728F7 /* DataResponse.swift in Sources */,
 				88B0C01124C72D9C00825E6A /* Request.swift in Sources */,
+				883E978424C96E1A008DB40B /* UserDefaultsStorage.swift in Sources */,
 				88B0C02424C744A400825E6A /* APIResponse.swift in Sources */,
 				88B0C00D24C7291200825E6A /* Gateway.swift in Sources */,
 				88B0BFF924C7204A00825E6A /* TabBarRouter.swift in Sources */,
 				88B0BFFB24C7204A00825E6A /* TabBarViewController.swift in Sources */,
+				883E978224C96E06008DB40B /* LocalStorage.swift in Sources */,
 				88B0BFF724C7204A00825E6A /* TabBarPresenter.swift in Sources */,
 				88D7E23924C74C4100C728F7 /* LeagueTableResponse.swift in Sources */,
 				88B0C00524C7214400825E6A /* FavouriteTeamsWorker.swift in Sources */,
