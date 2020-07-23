@@ -117,7 +117,7 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
 
     func displayToggledFavouriteTeam(viewModel: LeagueTable.Favourite.ViewModel) {
         cellViewModels[viewModel.index] = viewModel.cellViewModel
-        tableView.reloadRows(at: [IndexPath(row: viewModel.index, section: 0)], with: .none)
+        tableView.reloadRows(at: [IndexPath(row: viewModel.index, section: 0)], with: .fade)
     }
 
     // MARK: - View Controller Logic

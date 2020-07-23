@@ -1,5 +1,5 @@
 //
-//  FavouriteTeamsViewController.swift
+//  AllTeamsViewController.swift
 //  Premier League Demo
 //
 //  Created by Wojciech Wozniak on 21/07/2020.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-protocol FavouriteTeamsDisplayLogic: class {
+protocol AllTeamsDisplayLogic: class {
 
 }
 
-class FavouriteTeamsViewController: UIViewController, FavouriteTeamsDisplayLogic {
+class AllTeamsViewController: UIViewController, AllTeamsDisplayLogic {
 
-    // MARK: - FavouriteTeamsViewController - Internal properties
+    // MARK: - AllTeamsViewController - Internal properties
 
-    var interactor: FavouriteTeamsBusinessLogic?
-    var router: (FavouriteTeamsRoutingLogic & FavouriteTeamsDataPassing)?
+    var interactor: AllTeamsBusinessLogic?
+    var router: (AllTeamsRoutingLogic & AllTeamsDataPassing)?
 
     // MARK: - Subviews
 
@@ -38,9 +38,9 @@ class FavouriteTeamsViewController: UIViewController, FavouriteTeamsDisplayLogic
 
     private func attach() {
         let viewController = self
-        let interactor = FavouriteTeamsInteractor()
-        let presenter = FavouriteTeamsPresenter()
-        let router = FavouriteTeamsRouter()
+        let interactor = AllTeamsInteractor()
+        let presenter = AllTeamsPresenter()
+        let router = AllTeamsRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -62,7 +62,7 @@ class FavouriteTeamsViewController: UIViewController, FavouriteTeamsDisplayLogic
 
     }
 
-    // MARK: - FavouriteTeamsDisplayLogic
+    // MARK: - AllTeamsDisplayLogic
 
     // MARK: - View Controller Logic
 

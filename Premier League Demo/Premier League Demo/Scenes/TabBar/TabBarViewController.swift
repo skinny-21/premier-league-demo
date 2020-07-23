@@ -73,7 +73,7 @@ class TabBarViewController: UITabBarController, TabBarDisplayLogic {
         leagueTableViewController.tabBarItem = leagueTableTabBarItem
 
         let favouriteTeamsTabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        let favouriteTeamsViewController = FavouriteTeamsViewController()
+        let favouriteTeamsViewController = AllTeamsViewController()
         favouriteTeamsViewController.tabBarItem = favouriteTeamsTabBarItem
 
         viewControllers = [leagueTableViewController, favouriteTeamsViewController].map {

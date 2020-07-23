@@ -1,5 +1,5 @@
 //
-//  FavouriteTeamsModels.swift
+//  AllTeamsWorker.swift
 //  Premier League Demo
 //
 //  Created by Wojciech Wozniak on 21/07/2020.
@@ -8,6 +8,12 @@
 
 import UIKit
 
-enum FavouriteTeams {
+protocol AllTeamsWorkerProtocol {
+
+}
+
+class AllTeamsWorker: AllTeamsWorkerProtocol {
+
+    // MARK: - AllTeamsWorkerProtocol
 
 }

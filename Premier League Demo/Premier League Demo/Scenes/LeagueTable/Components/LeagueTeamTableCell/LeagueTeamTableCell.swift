@@ -72,8 +72,7 @@ class LeagueTeamTableCell: UITableViewCell {
 
         favouritesButton.setImage(UIImage(named: "fav_deselected"), for: .normal)
         favouritesButton.setImage(UIImage(named: "fav_selected"), for: .selected)
-        favouritesButton.imageView?.contentMode = .scaleAspectFit
-        favouritesButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        favouritesButton.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         favouritesButton.addTarget(self, action: #selector(favouritesButtonAction), for: .touchUpInside)
 
         nameLabel.setTextStyle(.textLeading)
