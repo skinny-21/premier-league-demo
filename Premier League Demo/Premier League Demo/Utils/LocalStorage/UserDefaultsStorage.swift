@@ -11,17 +11,12 @@ import Foundation
 class UserDefaultsStorage: LocalStorage {
     let userDefaults = UserDefaults.standard
 
-    func saveToFavourites(id: Int) {
-        userDefaults.setValue(true, forKey: "\(id)")
+    func saveToFavourites(id: Int, isFavourite: Bool){
+        userDefaults.setValue(isFavourite, forKey: "\(id)")
         userDefaults.synchronize()
     }
 
     func isFavourite(id: Int) -> Bool {
         return userDefaults.bool(forKey: "\(id)")
-    }
-
-    func removeFromFavourites(id: Int) {
-        userDefaults.removeObject(forKey: "\(id)")
-        userDefaults.synchronize()
     }
 }

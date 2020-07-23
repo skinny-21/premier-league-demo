@@ -39,6 +39,23 @@ enum LeagueTable {
         }
     }
 
+    enum Favourite {
+        struct Request {
+            let teamId: Int
+            let isFavourite: Bool
+        }
+
+        struct Response {
+            let index: Int
+            let teamModel: TeamModel
+        }
+
+        struct ViewModel {
+            let index: Int
+            let cellViewModel: LeagueTeamTableCellViewModel
+        }
+    }
+
     struct TeamModel {
         let id: Int
         let position: Int
@@ -48,7 +65,7 @@ enum LeagueTable {
         let matchesPlayed: Int
         let name: String
         let cleanName: String
-        let isFavourite: Bool
+        var isFavourite: Bool
         let imageURL: URL?
     }
 }

@@ -12,6 +12,7 @@ protocol LeagueTableWorkerProtocol {
     var gateway: Gateway? { get set }
     func getLeagueTable(completion: @escaping ([LeagueTable.TeamModel]) -> Void)
     func getImage(url: URL, completion: @escaping (Data?) -> Void)
+    func toggleFavouriteTeam(id: Int, isFavourite: Bool) -> Bool
 }
 
 class LeagueTableWorker: LeagueTableWorkerProtocol {
@@ -70,5 +71,11 @@ class LeagueTableWorker: LeagueTableWorkerProtocol {
         gateway.getImage(url: url) { (data, _) in
             completion(data)
         }
+    }
+
+    func toggleFavouriteTeam(id: Int, isFavourite: Bool) -> Bool {
+        let isFavouriteUpdated = !isFavourite
+        localStorage.saveToFavourites(id: id, isFavourite: isFavouriteUpdated)
+        return isFavouriteUpdated
     }
 }

@@ -54,6 +54,7 @@ class LeagueTeamTableCell: UITableViewCell {
     private func setDefaultAppearance() {
         contentView.backgroundColor = .background
         logoImageView.image = .placeholder
+        favouritesButton.isSelected = false
     }
 
     private func setup() {
@@ -71,6 +72,8 @@ class LeagueTeamTableCell: UITableViewCell {
 
         favouritesButton.setImage(UIImage(named: "fav_deselected"), for: .normal)
         favouritesButton.setImage(UIImage(named: "fav_selected"), for: .selected)
+        favouritesButton.imageView?.contentMode = .scaleAspectFit
+        favouritesButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         favouritesButton.addTarget(self, action: #selector(favouritesButtonAction), for: .touchUpInside)
 
         nameLabel.setTextStyle(.textLeading)
@@ -100,17 +103,17 @@ class LeagueTeamTableCell: UITableViewCell {
             pointsLabel.widthAnchor.constraint(equalToConstant: 24),
             pointsLabel.leadingAnchor.constraint(equalTo: goalsLabel.trailingAnchor),
 
-            favouritesButton.topAnchor.constraint(equalTo: contentView.topAnchor),
-            favouritesButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            favouritesButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             favouritesButton.leadingAnchor.constraint(equalTo: pointsLabel.trailingAnchor),
             favouritesButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            favouritesButton.widthAnchor.constraint(equalToConstant: 48)
+            favouritesButton.widthAnchor.constraint(equalToConstant: 48),
+            favouritesButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
 
     @objc
     private func favouritesButtonAction() {
-        delegate?.leagueTeamTableCell(self, favouritesButtonTappedFor: id)
+        delegate?.leagueTeamTableCell(self, toggleFavourite: id, isFavourite: favouritesButton.isSelected)
     }
 }
 

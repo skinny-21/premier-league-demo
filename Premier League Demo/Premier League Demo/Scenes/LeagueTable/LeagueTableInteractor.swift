@@ -11,6 +11,7 @@ import UIKit
 protocol LeagueTableBusinessLogic {
     func prepareContent(request: LeagueTable.Content.Request)
     func getTeamImage(request: LeagueTable.TeamImage.Request)
+    func toggleFavouriteTeam(request: LeagueTable.Favourite.Request)
 }
 
 protocol LeagueTableDataStore: class {
@@ -59,5 +60,19 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
             let response = LeagueTable.TeamImage.Response(index: request.index, imageData: data)
             self?.presenter?.presentTeamImage(response: response)
         })
+    }
+
+    func toggleFavouriteTeam(request: LeagueTable.Favourite.Request) {
+        guard let isFavourite = worker?.toggleFavouriteTeam(id: request.teamId, isFavourite: request.isFavourite) else {
+            return
+        }
+
+        guard let teamIndex = leagueTable.firstIndex(where: { $0.id == request.teamId }) else {
+            return
+        }
+
+        leagueTable[teamIndex].isFavourite = isFavourite
+        let response = LeagueTable.Favourite.Response(index: teamIndex, teamModel: leagueTable[teamIndex])
+        presenter?.presentToggledFavouriteTeam(response: response)
     }
 }

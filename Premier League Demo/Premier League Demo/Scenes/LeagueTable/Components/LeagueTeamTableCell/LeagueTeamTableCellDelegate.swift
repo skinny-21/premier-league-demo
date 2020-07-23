@@ -9,5 +9,5 @@
 import Foundation
 
 protocol LeagueTeamTableCellDelegate: class {
-    func leagueTeamTableCell(_ cell: LeagueTeamTableCell, favouritesButtonTappedFor id: Int)
+    func leagueTeamTableCell(_ cell: LeagueTeamTableCell, toggleFavourite id: Int, isFavourite: Bool)
 }

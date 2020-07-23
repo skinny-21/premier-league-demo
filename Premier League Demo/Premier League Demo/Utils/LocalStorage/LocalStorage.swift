@@ -9,7 +9,6 @@
 import Foundation
 
 protocol LocalStorage {
-    func saveToFavourites(id: Int)
+    func saveToFavourites(id: Int, isFavourite: Bool)
     func isFavourite(id: Int) -> Bool
-    func removeFromFavourites(id: Int)
 }

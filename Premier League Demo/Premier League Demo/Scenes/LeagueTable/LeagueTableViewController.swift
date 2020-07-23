@@ -11,6 +11,7 @@ import UIKit
 protocol LeagueTableDisplayLogic: class {
     func displayContent(viewModel: LeagueTable.Content.ViewModel)
     func displayTeamImage(viewModel: LeagueTable.TeamImage.ViewModel)
+    func displayToggledFavouriteTeam(viewModel: LeagueTable.Favourite.ViewModel)
 }
 
 class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Loadable {
@@ -114,6 +115,11 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
         }
     }
 
+    func displayToggledFavouriteTeam(viewModel: LeagueTable.Favourite.ViewModel) {
+        cellViewModels[viewModel.index] = viewModel.cellViewModel
+        tableView.reloadRows(at: [IndexPath(row: viewModel.index, section: 0)], with: .none)
+    }
+
     // MARK: - View Controller Logic
 
     private func prepareContent() {
@@ -158,7 +164,8 @@ extension LeagueTableViewController: UITableViewDelegate {
 }
 
 extension LeagueTableViewController: LeagueTeamTableCellDelegate {
-    func leagueTeamTableCell(_ cell: LeagueTeamTableCell, favouritesButtonTappedFor id: Int) {
-        print(id)
+    func leagueTeamTableCell(_ cell: LeagueTeamTableCell, toggleFavourite id: Int, isFavourite: Bool) {
+        let request = LeagueTable.Favourite.Request(teamId: id, isFavourite: isFavourite)
+        interactor?.toggleFavouriteTeam(request: request)
     }
 }

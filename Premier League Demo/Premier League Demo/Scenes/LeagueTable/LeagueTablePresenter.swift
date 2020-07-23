@@ -11,6 +11,7 @@ import UIKit
 protocol LeagueTablePresentationLogic {
     func presentContent(response: LeagueTable.Content.Response)
     func presentTeamImage(response: LeagueTable.TeamImage.Response)
+    func presentToggledFavouriteTeam(response: LeagueTable.Favourite.Response)
 }
 
 class LeagueTablePresenter: LeagueTablePresentationLogic {
@@ -22,16 +23,8 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
     // MARK: - LeagueTablePresentationLogic
 
     func presentContent(response: LeagueTable.Content.Response) {
-        let cellViewModels: [LeagueTeamTableCellViewModel] = response.leagueTable.map {
-            let goalsAgainst = $0.seasonGoals - $0.seasonGoalDifference
-            return LeagueTeamTableCellViewModel(
-                id: $0.id,
-                positon: "\($0.position).",
-                name: $0.cleanName,
-                matchesPlayed: "\($0.matchesPlayed)",
-                goals: "\($0.seasonGoals):\(goalsAgainst)",
-                points: "\($0.points)",
-                isFavourite: $0.isFavourite)
+        let cellViewModels = response.leagueTable.map {
+            $0.leagueCellViewModel
         }
 
         let viewModel = LeagueTable.Content.ViewModel(cellViewModels: cellViewModels,
@@ -42,12 +35,31 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
 
     func presentTeamImage(response: LeagueTable.TeamImage.Response) {
         var image: UIImage?
-
         if let imageData = response.imageData {
             image = UIImage(data: imageData)
         }
 
         let viewModel = LeagueTable.TeamImage.ViewModel(index: response.index, image: image)
         viewController?.displayTeamImage(viewModel: viewModel)
+    }
+
+    func presentToggledFavouriteTeam(response: LeagueTable.Favourite.Response) {
+        let viewModel = LeagueTable.Favourite.ViewModel(index: response.index,
+                                                         cellViewModel: response.teamModel.leagueCellViewModel)
+        viewController?.displayToggledFavouriteTeam(viewModel: viewModel)
+    }
+}
+
+private extension LeagueTable.TeamModel {
+    var leagueCellViewModel: LeagueTeamTableCellViewModel {
+        let goalsAgainst = seasonGoals - seasonGoalDifference
+        return LeagueTeamTableCellViewModel(
+            id: id,
+            positon: "\(position).",
+            name: cleanName,
+            matchesPlayed: "\(matchesPlayed)",
+            goals: "\(seasonGoals):\(goalsAgainst)",
+            points: "\(points)",
+            isFavourite: isFavourite)
     }
 }

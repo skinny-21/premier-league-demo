@@ -1,8 +1,18 @@
 {
   "images" : [
     {
-      "filename" : "fav_selected.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "star(1).png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "star.png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
