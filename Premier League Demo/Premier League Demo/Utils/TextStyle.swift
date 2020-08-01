@@ -12,6 +12,10 @@ enum TextStyle {
     case text
     case textLeading
     case button
+    case statTitleSmall
+    case statTitleBig
+    case statValueSmall
+    case statValueBig
 
     var config: TextStyleConfig {
         switch self {
@@ -21,6 +25,14 @@ enum TextStyle {
             return TextStyleConfig(color: .primary, size: 11, weight: .medium)
         case .button:
             return TextStyleConfig(color: .buttonTitle, size: 12, weight: .medium)
+        case .statTitleSmall:
+            return TextStyleConfig(color: .primary, size: 12, weight: .light)
+        case .statTitleBig:
+            return TextStyleConfig(color: .primary, size: 14, weight: .light)
+        case .statValueSmall:
+            return TextStyleConfig(color: .primary, size: 12, weight: .bold)
+        case .statValueBig:
+            return TextStyleConfig(color: .primary, size: 20, weight: .bold)
         }
     }
 }

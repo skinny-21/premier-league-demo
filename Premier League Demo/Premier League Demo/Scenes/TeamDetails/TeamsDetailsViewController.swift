@@ -21,6 +21,12 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
 
     // MARK: - Subviews
 
+    private let imageView = UIImageView()
+    private let topContainer = UIStackView()
+    private let rankStackView = UIStackView()
+    private let summaryStackView = UIStackView()
+    private let formStackView = UIStackView()
+    
     // MARK: - Initialization
 
     convenience init() {
@@ -61,12 +67,49 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
 
     func setup() {
         view.backgroundColor = .background
+        [imageView, topContainer, formStackView].forEach {
+            view.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        imageView.image = .placeholder
+
+        topContainer.axis = .vertical
+        topContainer.spacing = 24
+        [rankStackView, summaryStackView].forEach {
+            topContainer.addArrangedSubview($0)
+            $0.distribution = .equalCentering
+        }
+        
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            imageView.heightAnchor.constraint(equalToConstant: 96),
+            imageView.widthAnchor.constraint(equalToConstant: 96),
+            
+            topContainer.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
+            topContainer.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 32),
+            topContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            topContainer.heightAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor),
+            
+            formStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
+            formStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            formStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
 
     // MARK: - TeamDetailsDisplayLogic
 
     func displayContent(viewModel: TeamDetails.Content.ViewModel) {
         navigationItem.title = viewModel.title
+        
+        if let image = viewModel.image {
+            imageView.image = image
+        }
+
+        addStatItems(viewModel.rankItems, to: rankStackView)
+        addStatItems(viewModel.summaryItems, to: summaryStackView)
+
         interactor?.getDetails(requset: TeamDetails.Details.Request())
     }
     
@@ -75,5 +118,18 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
     private func prepareContent() {
         startLoading()
         interactor?.prepareContent(request: TeamDetails.Content.Request())
+    }
+
+    private func addStatItems(_ items: [StatViewModel], to stackView: UIStackView) {
+        stackView.arrangedSubviews.forEach {
+            stackView.removeArrangedSubview($0)
+            $0.removeFromSuperview()
+        }
+
+        items.forEach {
+            let statView = StatView()
+            statView.setViewModel($0)
+            stackView.addArrangedSubview(statView)
+        }
     }
 }

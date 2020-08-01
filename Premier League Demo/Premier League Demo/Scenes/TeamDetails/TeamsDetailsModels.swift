@@ -20,6 +20,9 @@ enum TeamDetails {
 
         struct ViewModel {
             let title: String?
+            let image: UIImage?
+            let rankItems: [StatViewModel]
+            let summaryItems: [StatViewModel]
             let shouldShowErrorMessage: Bool
             let errorMessage: String
         }
@@ -34,7 +37,7 @@ enum TeamDetails {
         struct Request {}
 
         struct Response {
-        
+
         }
 
         struct ViewModel {

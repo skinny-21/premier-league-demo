@@ -115,7 +115,3 @@ class LeagueTeamTableCell: UITableViewCell {
         delegate?.leagueTeamTableCell(self, toggleFavourite: id, isFavourite: favouritesButton.isSelected)
     }
 }
-
-private extension UIImage {
-    static let placeholder = UIImage(named: "team_logo_placeholder")
-}

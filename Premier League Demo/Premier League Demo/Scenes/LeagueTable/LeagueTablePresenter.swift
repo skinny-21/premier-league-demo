@@ -41,8 +41,9 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
     }
 
     func presentToggledFavouriteTeam(response: LeagueTable.Favourite.Response) {
-        let viewModel = LeagueTable.Favourite.ViewModel(index: response.index,
-                                                         cellViewModel: response.teamModel.leagueCellViewModel)
+        let viewModel = LeagueTable.Favourite.ViewModel(
+            index: response.index,
+            cellViewModel: response.teamModel.leagueCellViewModel)
         viewController?.displayToggledFavouriteTeam(viewModel: viewModel)
     }
     
@@ -53,7 +54,6 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
 
 private extension TeamModel {
     var leagueCellViewModel: LeagueTeamTableCellViewModel {
-        let goalsAgainst = seasonGoals - seasonGoalDifference
         return LeagueTeamTableCellViewModel(
             id: id,
             positon: "\(position).",

@@ -20,3 +20,9 @@ struct TeamModel {
     var isFavourite: Bool
     let imageURL: URL?
 }
+
+extension TeamModel {
+    var goalsAgainst: Int {
+        seasonGoals - seasonGoalDifference
+    }
+}

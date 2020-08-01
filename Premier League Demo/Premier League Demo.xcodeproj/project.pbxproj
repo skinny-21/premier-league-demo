@@ -66,6 +66,9 @@
 		88CC9C8924D566C0009552B7 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC9C8824D566C0009552B7 /* Pager.swift */; };
 		88CC9C8B24D56776009552B7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC9C8A24D56776009552B7 /* Player.swift */; };
 		88CC9C8D24D56788009552B7 /* PlayerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC9C8C24D56788009552B7 /* PlayerPosition.swift */; };
+		88CC9C8F24D57EE9009552B7 /* UIImage+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC9C8E24D57EE9009552B7 /* UIImage+Placeholder.swift */; };
+		88CC9C9224D582F5009552B7 /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC9C9124D582F5009552B7 /* StatView.swift */; };
+		88CC9C9424D5850A009552B7 /* StatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CC9C9324D5850A009552B7 /* StatViewModel.swift */; };
 		88D7E23724C74B8B00C728F7 /* DataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7E23624C74B8B00C728F7 /* DataResponse.swift */; };
 		88D7E23924C74C4100C728F7 /* LeagueTableResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7E23824C74C4100C728F7 /* LeagueTableResponse.swift */; };
 		88D7E23B24C74C8500C728F7 /* LeagueTableTeamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7E23A24C74C8500C728F7 /* LeagueTableTeamResponse.swift */; };
@@ -159,6 +162,9 @@
 		88CC9C8824D566C0009552B7 /* Pager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pager.swift; sourceTree = "<group>"; };
 		88CC9C8A24D56776009552B7 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		88CC9C8C24D56788009552B7 /* PlayerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPosition.swift; sourceTree = "<group>"; };
+		88CC9C8E24D57EE9009552B7 /* UIImage+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Placeholder.swift"; sourceTree = "<group>"; };
+		88CC9C9124D582F5009552B7 /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
+		88CC9C9324D5850A009552B7 /* StatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewModel.swift; sourceTree = "<group>"; };
 		88D7E23624C74B8B00C728F7 /* DataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponse.swift; sourceTree = "<group>"; };
 		88D7E23824C74C4100C728F7 /* LeagueTableResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableResponse.swift; sourceTree = "<group>"; };
 		88D7E23A24C74C8500C728F7 /* LeagueTableTeamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableTeamResponse.swift; sourceTree = "<group>"; };
@@ -206,6 +212,7 @@
 		88A283FF24D4835900B403DA /* TeamDetails */ = {
 			isa = PBXGroup;
 			children = (
+				88CC9C9024D582D6009552B7 /* Components */,
 				88A2840424D4839700B403DA /* TeamsDetailsInteractor.swift */,
 				88A2840324D4839700B403DA /* TeamsDetailsModels.swift */,
 				88A2840524D4839700B403DA /* TeamsDetailsPresenter.swift */,
@@ -416,6 +423,7 @@
 				88A2841624D5480E00B403DA /* UIImage+OptionalData.swift */,
 				88A3049D24C76EF8005C0609 /* UIColor+Palette.swift */,
 				88CC9C7224D54D5C009552B7 /* UIButton+TextStyle.swift */,
+				88CC9C8E24D57EE9009552B7 /* UIImage+Placeholder.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -439,6 +447,23 @@
 				88CC9C8C24D56788009552B7 /* PlayerPosition.swift */,
 			);
 			path = LeaguePlayers;
+			sourceTree = "<group>";
+		};
+		88CC9C9024D582D6009552B7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				88CC9C9524D58510009552B7 /* StatView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		88CC9C9524D58510009552B7 /* StatView */ = {
+			isa = PBXGroup;
+			children = (
+				88CC9C9124D582F5009552B7 /* StatView.swift */,
+				88CC9C9324D5850A009552B7 /* StatViewModel.swift */,
+			);
+			path = StatView;
 			sourceTree = "<group>";
 		};
 		88D7E23E24C750C500C728F7 /* LeagueTable */ = {
@@ -622,6 +647,7 @@
 				88B0BFFC24C7204A00825E6A /* TabBarInteractor.swift in Sources */,
 				88CC9C8424D55EAA009552B7 /* Stat.swift in Sources */,
 				88B0BFED24C71FD100825E6A /* LeagueTableModels.swift in Sources */,
+				88CC9C8F24D57EE9009552B7 /* UIImage+Placeholder.swift in Sources */,
 				88A2840A24D4839700B403DA /* TeamsDetailsInteractor.swift in Sources */,
 				88B0C02224C7448600825E6A /* APIRequest.swift in Sources */,
 				88B0C02024C743B700825E6A /* URL+URLQueryItem.swift in Sources */,
@@ -650,6 +676,7 @@
 				88B0BFFA24C7204A00825E6A /* TabBarModels.swift in Sources */,
 				88B0C00424C7214400825E6A /* AllTeamsPresenter.swift in Sources */,
 				88B0BFEE24C71FD100825E6A /* LeagueTableViewController.swift in Sources */,
+				88CC9C9424D5850A009552B7 /* StatViewModel.swift in Sources */,
 				88B0BFEC24C71FD100825E6A /* LeagueTableRouter.swift in Sources */,
 				88D7E24A24C760EC00C728F7 /* LeagueTeamTableCellViewModel.swift in Sources */,
 				88D7E23B24C74C8500C728F7 /* LeagueTableTeamResponse.swift in Sources */,
@@ -675,6 +702,7 @@
 				88B0C00524C7214400825E6A /* AllTeamsWorker.swift in Sources */,
 				88CC9C8724D563C0009552B7 /* LeaguePlayersResponse.swift in Sources */,
 				88B0BFF824C7204A00825E6A /* TabBarWorker.swift in Sources */,
+				88CC9C9224D582F5009552B7 /* StatView.swift in Sources */,
 				88CC9C7524D5503B009552B7 /* ErrorViewDelegate.swift in Sources */,
 				88A2840724D4839700B403DA /* TeamsDetailsWorker.swift in Sources */,
 				88CC9C8D24D56788009552B7 /* PlayerPosition.swift in Sources */,

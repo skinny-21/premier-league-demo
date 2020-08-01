@@ -8,6 +8,8 @@
 
 import Foundation
 
+#warning("TODO: remove unused lets")
+
 struct Player: Decodable {
     let concededAway: Int
     let penaltyMisses, id: Int
