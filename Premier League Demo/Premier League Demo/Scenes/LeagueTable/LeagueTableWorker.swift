@@ -16,13 +16,7 @@ protocol LeagueTableWorkerProtocol {
 }
 
 class LeagueTableWorker: LeagueTableWorkerProtocol {
-
-    // MARK: - LeagueTableWorkerProtocol
-
     var gateway: Gateway?
-
-    // MARK: - Private properties
-
     private let localStorage: LocalStorage
 
     init(localStorage: LocalStorage = UserDefaultsStorage()) {

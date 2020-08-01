@@ -43,6 +43,7 @@ class TeamDetailsInteractor: TeamDetailsBusinessLogic, TeamDetailsDataStore {
     // MARK: - TeamDetailsBusinessLogic
 
     func prepareContent(request: TeamDetails.Content.Request) {
+        worker?.gateway = gateway
         let scene: TeamDetails.Content.Scene = selectedTeamModel != nil ? .content : .error
         let response = TeamDetails.Content.Response(scene: scene,
                                                     teamModel: selectedTeamModel,
@@ -51,6 +52,14 @@ class TeamDetailsInteractor: TeamDetailsBusinessLogic, TeamDetailsDataStore {
     }
     
     func getDetails(requset: TeamDetails.Details.Request) {
-
+        guard let teamId = selectedTeamModel?.id else {
+            return
+        }
+        
+        worker?.getTeamDetails(teamId: teamId, completion: { (players, stats) in
+            print(players.count)
+            print(players.map { $0.fullName })
+            print(stats.count)
+        })
     }
 }
