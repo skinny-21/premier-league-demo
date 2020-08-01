@@ -64,14 +64,13 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        prepareContent()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         navigationController?.setNavigationBarHidden(false, animated: true)
-
+        prepareContent()
     }
 
     // MARK: - Subviews setup
@@ -141,6 +140,8 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
 
     private func prepareContent() {
         startLoading()
+        tableView.isHidden = true
+        errorView.isHidden = true
         interactor?.prepareContent(request: LeagueTable.Content.Request())
     }
 }

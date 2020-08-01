@@ -11,6 +11,7 @@ import UIKit
 protocol TeamDetailsPresentationLogic {
     func presentContent(response: TeamDetails.Content.Response)
     func presentDetails(response: TeamDetails.Details.Response)
+    func presentToggledFavouriteTeam(response: TeamDetails.Favourite.Response)
 }
 
 class TeamDetailsPresenter: TeamDetailsPresentationLogic {
@@ -39,6 +40,7 @@ class TeamDetailsPresenter: TeamDetailsPresentationLogic {
             image: image,
             rankItems: rankItems,
             summaryItems: summaryItems,
+            favouriteButtonImage: favouriteButtonImage(isFavourite: response.isFavourite),
             shouldShowErrorMessage: response.scene == .error,
             errorMessage: "")
         viewController?.displayContent(viewModel: viewModel)
@@ -58,6 +60,17 @@ class TeamDetailsPresenter: TeamDetailsPresentationLogic {
                                                       playersCellViewModels: playersCellViewModels)
         viewController?.displayDetails(viewModel: viewModel)
 
+    }
+
+    func presentToggledFavouriteTeam(response: TeamDetails.Favourite.Response) {
+        let viewModel = TeamDetails.Favourite.ViewModel(
+            favouriteButtonImage: favouriteButtonImage(isFavourite: response.isFavourite))
+        viewController?.displayToggledFavouriteTeam(viewModel: viewModel)
+    }
+
+    private func favouriteButtonImage(isFavourite: Bool) -> UIImage? {
+        let imageName = isFavourite ? "fav_selected" : "fav_deselected"
+        return UIImage(named: imageName)
     }
 }
 

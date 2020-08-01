@@ -78,7 +78,7 @@ class TabBarViewController: UITabBarController, TabBarDisplayLogic {
 
         tabBar.tintColor = .accent
         viewControllers = [leagueTableViewController, allTeamsViewController].map {
-            UINavigationController(rootViewController: $0)
+            NavigationController(rootViewController: $0)
         }
     }
 

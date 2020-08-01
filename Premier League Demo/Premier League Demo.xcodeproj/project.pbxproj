@@ -79,6 +79,7 @@
 		88D7E24D24C7672F00C728F7 /* LeagueTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D7E24C24C7672F00C728F7 /* LeagueTableHeader.swift */; };
 		88FDBD6C24D594AE00B61AE8 /* PlayerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FDBD6B24D594AE00B61AE8 /* PlayerTableCell.swift */; };
 		88FDBD6E24D594CF00B61AE8 /* PlayerTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FDBD6D24D594CF00B61AE8 /* PlayerTableCellViewModel.swift */; };
+		88FDBD7324D5A74800B61AE8 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FDBD7224D5A74800B61AE8 /* NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +178,7 @@
 		88D7E24C24C7672F00C728F7 /* LeagueTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableHeader.swift; sourceTree = "<group>"; };
 		88FDBD6B24D594AE00B61AE8 /* PlayerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTableCell.swift; sourceTree = "<group>"; };
 		88FDBD6D24D594CF00B61AE8 /* PlayerTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTableCellViewModel.swift; sourceTree = "<group>"; };
+		88FDBD7224D5A74800B61AE8 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +258,7 @@
 		88A2841924D54AA200B403DA /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				88FDBD7124D5A73A00B61AE8 /* NavigationController */,
 				88A2841C24D54AB400B403DA /* ErrorView */,
 			);
 			path = Components;
@@ -528,6 +531,14 @@
 			path = PlayerTableCell;
 			sourceTree = "<group>";
 		};
+		88FDBD7124D5A73A00B61AE8 /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				88FDBD7224D5A74800B61AE8 /* NavigationController.swift */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -719,6 +730,7 @@
 				88CC9C8724D563C0009552B7 /* LeaguePlayersResponse.swift in Sources */,
 				88B0BFF824C7204A00825E6A /* TabBarWorker.swift in Sources */,
 				88CC9C9224D582F5009552B7 /* StatView.swift in Sources */,
+				88FDBD7324D5A74800B61AE8 /* NavigationController.swift in Sources */,
 				88CC9C7524D5503B009552B7 /* ErrorViewDelegate.swift in Sources */,
 				88A2840724D4839700B403DA /* TeamsDetailsWorker.swift in Sources */,
 				88CC9C8D24D56788009552B7 /* PlayerPosition.swift in Sources */,

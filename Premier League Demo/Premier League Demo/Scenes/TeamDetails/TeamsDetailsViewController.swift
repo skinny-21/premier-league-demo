@@ -11,6 +11,7 @@ import UIKit
 protocol TeamDetailsDisplayLogic: class {
     func displayContent(viewModel: TeamDetails.Content.ViewModel)
     func displayDetails(viewModel: TeamDetails.Details.ViewModel)
+    func displayToggledFavouriteTeam(viewModel: TeamDetails.Favourite.ViewModel)
 }
 
 class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Loadable {
@@ -22,6 +23,7 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
 
     // MARK: - Subviews
 
+    private let favouritesButton = UIBarButtonItem(image: UIImage(), style: .plain, target: nil, action: nil)
     private let imageView = UIImageView()
     private let topContainer = UIStackView()
     private let rankStackView = UIStackView()
@@ -74,6 +76,9 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
     // MARK: - Subviews setup
 
     func setup() {
+        favouritesButton.target = self
+        favouritesButton.action = #selector(favouritesButtonAction)
+        navigationItem.rightBarButtonItem = favouritesButton
         view.backgroundColor = .background
         [imageView, topContainer, formTitleLabel, formStackView, playersTitleLabel, tableView].forEach {
             view.addSubview($0)
@@ -137,7 +142,8 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
 
     func displayContent(viewModel: TeamDetails.Content.ViewModel) {
         navigationItem.title = viewModel.title
-        
+        favouritesButton.image = viewModel.favouriteButtonImage
+
         if let image = viewModel.image {
             imageView.image = image
         }
@@ -160,6 +166,10 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
         }
     }
 
+    func displayToggledFavouriteTeam(viewModel: TeamDetails.Favourite.ViewModel) {
+        favouritesButton.image = viewModel.favouriteButtonImage
+    }
+
     // MARK: - View Controller Logic
     
     private func prepareContent() {
@@ -178,6 +188,11 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
             statView.setViewModel($0)
             stackView.addArrangedSubview(statView)
         }
+    }
+
+    @objc
+    private func favouritesButtonAction() {
+        interactor?.toggleFavouriteTeam(request: TeamDetails.Favourite.Request())
     }
 }
 

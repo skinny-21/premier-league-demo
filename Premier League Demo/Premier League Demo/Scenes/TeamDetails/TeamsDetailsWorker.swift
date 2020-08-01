@@ -11,10 +11,18 @@ import UIKit
 protocol TeamDetailsWorkerProtocol {
     var gateway: Gateway? { get set }
     func getTeamDetails(teamId: Int, completion: @escaping (_ players: [Player], _ stats: [String: Stat]) -> Void)
+    func isTeamFavourite(teamId: Int) -> Bool
+    func toggleFavouriteTeam(teamId: Int) -> Bool
 }
 
 class TeamDetailsWorker: TeamDetailsWorkerProtocol {
     var gateway: Gateway?
+
+    private let localStorage: LocalStorage
+
+    init(localStorage: LocalStorage = UserDefaultsStorage()) {
+        self.localStorage = localStorage
+    }
 
     func getTeamDetails(teamId: Int, completion: @escaping (_ players: [Player], _ stats: [String: Stat]) -> Void) {
         var players = [Player]()
@@ -43,7 +51,17 @@ class TeamDetailsWorker: TeamDetailsWorkerProtocol {
             completion(players, stats)
         }
     }
-    
+
+    func isTeamFavourite(teamId: Int) -> Bool {
+        return localStorage.isFavourite(id: teamId)
+    }
+
+    func toggleFavouriteTeam(teamId: Int) -> Bool {
+        let isFavouriteUpdated = !isTeamFavourite(teamId: teamId)
+        localStorage.saveToFavourites(id: teamId, isFavourite: isFavouriteUpdated)
+        return isFavouriteUpdated
+    }
+
     private func getTeamStats(teamId: Int, completion: @escaping ([String: Stat]) -> Void) {
         guard let gateway = gateway else {
             completion([:])

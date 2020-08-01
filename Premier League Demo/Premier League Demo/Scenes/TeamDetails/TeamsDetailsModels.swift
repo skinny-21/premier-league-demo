@@ -16,6 +16,7 @@ enum TeamDetails {
             let scene: Scene
             let teamModel: TeamModel?
             let teamImageData: Data?
+            let isFavourite: Bool
         }
 
         struct ViewModel {
@@ -23,6 +24,7 @@ enum TeamDetails {
             let image: UIImage?
             let rankItems: [StatViewModel]
             let summaryItems: [StatViewModel]
+            let favouriteButtonImage: UIImage?
             let shouldShowErrorMessage: Bool
             let errorMessage: String
         }
@@ -46,6 +48,18 @@ enum TeamDetails {
         struct ViewModel {
             let formItems: [StatViewModel]
             let playersCellViewModels: [PlayerTableCellViewModel]
+        }
+    }
+
+    enum Favourite {
+        struct Request {}
+
+        struct Response {
+            let isFavourite: Bool
+        }
+
+        struct ViewModel {
+            let favouriteButtonImage: UIImage?
         }
     }
 }
