@@ -15,6 +15,13 @@ class ErrorView: UIView {
             retryButton.isHidden = isRetryButtonHidden
         }
     }
+
+    var errorMessage: String? {
+        didSet {
+            titleLabel.text = errorMessage
+        }
+    }
+
     weak var delegate: ErrorViewDelegate?
     
     private let stackView = UIStackView()
@@ -38,8 +45,7 @@ class ErrorView: UIView {
         stackView.alignment = .center
         stackView.distribution = .fill
         [titleLabel, retryButton].forEach(stackView.addArrangedSubview)
-        
-        titleLabel.text = "Data could not be retrieved"
+
         titleLabel.setTextStyle(.textLeading)
         
         retryButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)

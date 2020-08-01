@@ -17,8 +17,7 @@ enum LeagueTable {
         }
 
         struct ViewModel {
-            let cellViewModels: [LeagueTeamTableCellViewModel]
-            let shouldShowError: Bool
+            let commonViewModel: CommonViewModel
         }
     }
 
@@ -76,5 +75,25 @@ enum LeagueTable {
             let index: Int
             let cellViewModel: LeagueTeamTableCellViewModel
         }
+    }
+
+    enum ToggleFavourites {
+        struct Request {}
+
+        struct Response {
+            let leagueTable: [TeamModel]
+        }
+
+        struct ViewModel {
+            let commonViewModel: CommonViewModel
+        }
+    }
+
+
+    struct CommonViewModel {
+        let cellViewModels: [LeagueTeamTableCellViewModel]
+        let shouldShowError: Bool
+        let errorMessage: String
+        let shouldHideRetryButton: Bool
     }
 }

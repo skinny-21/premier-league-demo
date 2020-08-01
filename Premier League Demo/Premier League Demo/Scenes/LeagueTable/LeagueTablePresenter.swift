@@ -14,6 +14,7 @@ protocol LeagueTablePresentationLogic {
     func presentToggledFavouriteTeam(response: LeagueTable.Favourite.Response)
     func presentRefreshedFavouriteTeam(response: LeagueTable.RefreshFavourite.Response)
     func presentTeamDetails(response: LeagueTable.Details.Response)
+    func presentToggledOnlyFavourites(response: LeagueTable.ToggleFavourites.Response)
 }
 
 class LeagueTablePresenter: LeagueTablePresentationLogic {
@@ -29,10 +30,14 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
             $0.leagueCellViewModel
         }
 
-        let viewModel = LeagueTable.Content.ViewModel(
+        let commonViewModel = LeagueTable.CommonViewModel(
             cellViewModels: cellViewModels,
-            shouldShowError: response.leagueTable.isEmpty)
-        viewController?.displayContent(viewModel: viewModel)
+            shouldShowError: response.leagueTable.isEmpty,
+            errorMessage: "Data could not be retrieved",
+            shouldHideRetryButton: false)
+
+        viewController?.displayContent(viewModel: LeagueTable.Content.ViewModel(
+                                        commonViewModel: commonViewModel))
     }
 
     func presentTeamImage(response: LeagueTable.TeamImage.Response) {
@@ -57,6 +62,21 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
 
     func presentTeamDetails(response: LeagueTable.Details.Response) {
         viewController?.displayTeamDetails(viewModel: LeagueTable.Details.ViewModel())
+    }
+
+    func presentToggledOnlyFavourites(response: LeagueTable.ToggleFavourites.Response) {
+        let cellViewModels = response.leagueTable.map {
+            $0.leagueCellViewModel
+        }
+
+        let commonViewModel = LeagueTable.CommonViewModel(
+            cellViewModels: cellViewModels,
+            shouldShowError: response.leagueTable.isEmpty,
+            errorMessage: "No favourite teams",
+            shouldHideRetryButton: true)
+
+        viewController?.displayToggledOnlyFavourites(viewModel: LeagueTable.ToggleFavourites.ViewModel(
+                                                    commonViewModel: commonViewModel))
     }
 }
 

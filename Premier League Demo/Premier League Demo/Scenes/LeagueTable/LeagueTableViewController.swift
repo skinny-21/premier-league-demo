@@ -14,6 +14,7 @@ protocol LeagueTableDisplayLogic: class {
     func displayToggledFavouriteTeam(viewModel: LeagueTable.Favourite.ViewModel)
     func displayTeamDetails(viewModel: LeagueTable.Details.ViewModel)
     func displayRefreshedFavouriteTeam(viewModel: LeagueTable.RefreshFavourite.ViewModel)
+    func displayToggledOnlyFavourites(viewModel: LeagueTable.ToggleFavourites.ViewModel)
 }
 
 class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Loadable {
@@ -80,6 +81,7 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
     private func setup() {
         navigationItem.title = "Premier League"
 
+        filterFavouritesButton.isEnabled = false
         filterFavouritesButton.target = self
         filterFavouritesButton.action = #selector(filterFavouritesButtonAction)
         navigationItem.rightBarButtonItem = filterFavouritesButton
@@ -118,10 +120,8 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
     func displayContent(viewModel: LeagueTable.Content.ViewModel) {
         DispatchQueue.main.async {
             self.stopLoading()
-            self.cellViewModels = viewModel.cellViewModels
-            self.tableView.isHidden = viewModel.cellViewModels.isEmpty
-            self.tableView.reloadData()
-            self.errorView.isHidden = !viewModel.shouldShowError
+            self.reloadScene(viewModel.commonViewModel)
+            self.filterFavouritesButton.isEnabled = !viewModel.commonViewModel.shouldShowError
         }
     }
 
@@ -146,6 +146,10 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
         refreshCellViewModel(viewModel.cellViewModel, at: viewModel.index)
     }
 
+    func displayToggledOnlyFavourites(viewModel: LeagueTable.ToggleFavourites.ViewModel) {
+        reloadScene(viewModel.commonViewModel)
+    }
+
     // MARK: - View Controller Logic
 
     private func prepareContent() {
@@ -155,6 +159,15 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
         interactor?.prepareContent(request: LeagueTable.Content.Request())
     }
 
+    private func reloadScene(_ viewModel: LeagueTable.CommonViewModel) {
+        cellViewModels = viewModel.cellViewModels
+        tableView.isHidden = viewModel.cellViewModels.isEmpty
+        tableView.reloadData()
+        errorView.isHidden = !viewModel.shouldShowError
+        errorView.errorMessage = viewModel.errorMessage
+        errorView.isRetryButtonHidden = viewModel.shouldHideRetryButton
+    }
+
     private func refreshCellViewModel(_ cellViewModel: LeagueTeamTableCellViewModel, at index: Int) {
         cellViewModels[index] = cellViewModel
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
@@ -162,7 +175,7 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
 
     @objc
     private func filterFavouritesButtonAction() {
-
+        interactor?.toggleOnlyFavourites(request: LeagueTable.ToggleFavourites.Request())
     }
 }
 

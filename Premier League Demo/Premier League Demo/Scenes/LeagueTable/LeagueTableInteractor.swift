@@ -14,6 +14,7 @@ protocol LeagueTableBusinessLogic {
     func toggleFavouriteTeam(request: LeagueTable.Favourite.Request)
     func teamDetails(request: LeagueTable.Details.Request)
     func refreshFavourite(request: LeagueTable.RefreshFavourite.Request)
+    func toggleOnlyFavourites(request: LeagueTable.ToggleFavourites.Request)
 }
 
 protocol LeagueTableDataStore: class {
@@ -37,8 +38,10 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
 
     // MARK: - Private properties
 
+    private var originalLeagueTable = [TeamModel]()
     private var leagueTable = [TeamModel]()
     private var teamsImagesData = [Int: Data]()
+    private var shouldDisplayOnlyFavourites = false
 
     // MARK: - Initialization
 
@@ -52,7 +55,8 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
         worker?.gateway = gateway
         worker?.getLeagueTable(completion: { [weak self] (leagueTable) in
             guard let self = self else { return }
-            self.leagueTable = leagueTable.sorted { $0.position < $1.position }
+            self.originalLeagueTable = leagueTable.sorted { $0.position < $1.position }
+            self.leagueTable = self.originalLeagueTable
             let response = LeagueTable.Content.Response(leagueTable: self.leagueTable)
             self.presenter?.presentContent(response: response)
         })
@@ -77,12 +81,18 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
             return
         }
 
-        guard let teamIndex = leagueTable.firstIndex(where: { $0.id == request.teamId }) else {
+        guard let originalLeagueTableIndex = originalLeagueTable.firstIndex(where: { $0.id == request.teamId }) else {
             return
         }
 
-        leagueTable[teamIndex].isFavourite = isFavourite
-        let response = LeagueTable.Favourite.Response(index: teamIndex, teamModel: leagueTable[teamIndex])
+        originalLeagueTable[originalLeagueTableIndex].isFavourite = isFavourite
+
+        guard let leagueTableIndex = leagueTable.firstIndex(where: { $0.id == request.teamId }) else {
+            return
+        }
+
+        leagueTable[leagueTableIndex].isFavourite = isFavourite
+        let response = LeagueTable.Favourite.Response(index: leagueTableIndex, teamModel: leagueTable[leagueTableIndex])
         presenter?.presentToggledFavouriteTeam(response: response)
     }
     
@@ -97,18 +107,36 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
         presenter?.presentTeamDetails(response: LeagueTable.Details.Response())
     }
 
-
     func refreshFavourite(request: LeagueTable.RefreshFavourite.Request) {
         guard let selectedTeamModel = selectedTeamModel else {
             return
         }
 
-        guard let teamIndex = leagueTable.firstIndex(where: { $0.id == selectedTeamModel.id }) else {
+        guard let originalLeagueTableIndex = originalLeagueTable.firstIndex(where: { $0.id == selectedTeamModel.id }) else {
             return
         }
 
-        leagueTable[teamIndex] = selectedTeamModel
-        let response = LeagueTable.RefreshFavourite.Response(index: teamIndex, teamModel: leagueTable[teamIndex])
+        originalLeagueTable[originalLeagueTableIndex].isFavourite = selectedTeamModel.isFavourite
+
+        guard let leagueTableIndex = leagueTable.firstIndex(where: { $0.id == selectedTeamModel.id }) else {
+            return
+        }
+
+        leagueTable[leagueTableIndex] = selectedTeamModel
+        let response = LeagueTable.RefreshFavourite.Response(index: leagueTableIndex, teamModel: leagueTable[leagueTableIndex])
         presenter?.presentRefreshedFavouriteTeam(response: response)
+    }
+
+    func toggleOnlyFavourites(request: LeagueTable.ToggleFavourites.Request) {
+        shouldDisplayOnlyFavourites.toggle()
+
+        if shouldDisplayOnlyFavourites {
+            leagueTable = originalLeagueTable.filter({ $0.isFavourite })
+        } else {
+            leagueTable = originalLeagueTable
+        }
+
+        let response = LeagueTable.ToggleFavourites.Response(leagueTable: leagueTable)
+        self.presenter?.presentToggledOnlyFavourites(response: response)
     }
 }
