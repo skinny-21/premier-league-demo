@@ -72,12 +72,12 @@ class TabBarViewController: UITabBarController, TabBarDisplayLogic {
         leagueTableViewController.router?.dataStore?.gateway = gateway
         leagueTableViewController.tabBarItem = leagueTableTabBarItem
 
-        let allTeamsTabBarItem = UITabBarItem(title: "TEAMS", image: UIImage(named: "tab_bar_teams"), selectedImage: nil)
-        let allTeamsViewController = AllTeamsViewController()
-        allTeamsViewController.tabBarItem = allTeamsTabBarItem
+        let creditsTabBarItem = UITabBarItem(title: "CREDITS", image: UIImage(named: "tab_bar_credits"), selectedImage: nil)
+        let creditsViewController = CreditsViewController()
+        creditsViewController.tabBarItem = creditsTabBarItem
 
         tabBar.tintColor = .accent
-        viewControllers = [leagueTableViewController, allTeamsViewController].map {
+        viewControllers = [leagueTableViewController, creditsViewController].map {
             NavigationController(rootViewController: $0)
         }
     }

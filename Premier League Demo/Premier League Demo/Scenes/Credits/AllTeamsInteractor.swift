@@ -1,5 +1,5 @@
 //
-//  AllTeamsInteractor.swift
+//  CreditsInteractor.swift
 //  Premier League Demo
 //
 //  Created by Wojciech Wozniak on 21/07/2020.
@@ -16,22 +16,17 @@ protocol AllTeamsDataStore {
 
 }
 
-class AllTeamsInteractor: AllTeamsBusinessLogic, AllTeamsDataStore {
-
-    // MARK: - DataStore
+class CreditsInteractor: AllTeamsBusinessLogic, AllTeamsDataStore {
 
     // MARK: - AllTeamsDataStore
 
     // MARK: - Internal properties
 
     var presenter: AllTeamsPresentationLogic?
-    var worker: AllTeamsWorkerProtocol?
 
     // MARK: - Initialization
 
-    init(worker: AllTeamsWorkerProtocol = AllTeamsWorker()) {
-        self.worker = worker
-    }
+    init() {}
 
     // MARK: - AllTeamsBusinessLogic
 

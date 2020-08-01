@@ -50,12 +50,11 @@
 		88B0BFFA24C7204A00825E6A /* TabBarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0BFF424C7204A00825E6A /* TabBarModels.swift */; };
 		88B0BFFB24C7204A00825E6A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0BFF524C7204A00825E6A /* TabBarViewController.swift */; };
 		88B0BFFC24C7204A00825E6A /* TabBarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0BFF624C7204A00825E6A /* TabBarInteractor.swift */; };
-		88B0C00424C7214400825E6A /* AllTeamsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0BFFE24C7214400825E6A /* AllTeamsPresenter.swift */; };
-		88B0C00524C7214400825E6A /* AllTeamsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0BFFF24C7214400825E6A /* AllTeamsWorker.swift */; };
-		88B0C00624C7214400825E6A /* AllTeamsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0C00024C7214400825E6A /* AllTeamsRouter.swift */; };
-		88B0C00724C7214400825E6A /* AllTeamsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0C00124C7214400825E6A /* AllTeamsModels.swift */; };
-		88B0C00824C7214400825E6A /* AllTeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0C00224C7214400825E6A /* AllTeamsViewController.swift */; };
-		88B0C00924C7214400825E6A /* AllTeamsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0C00324C7214400825E6A /* AllTeamsInteractor.swift */; };
+		88B0C00424C7214400825E6A /* CreditsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0BFFE24C7214400825E6A /* CreditsPresenter.swift */; };
+		88B0C00624C7214400825E6A /* CreditsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0C00024C7214400825E6A /* CreditsRouter.swift */; };
+		88B0C00724C7214400825E6A /* CreditsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0C00124C7214400825E6A /* CreditsModels.swift */; };
+		88B0C00824C7214400825E6A /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0C00224C7214400825E6A /* CreditsViewController.swift */; };
+		88B0C00924C7214400825E6A /* CreditsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0C00324C7214400825E6A /* CreditsInteractor.swift */; };
 		88B0C00D24C7291200825E6A /* Gateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0C00C24C7291200825E6A /* Gateway.swift */; };
 		88B0C00F24C7292400825E6A /* GatewayInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0C00E24C7292400825E6A /* GatewayInstance.swift */; };
 		88B0C01124C72D9C00825E6A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0C01024C72D9C00825E6A /* Request.swift */; };
@@ -157,12 +156,11 @@
 		88B0BFF424C7204A00825E6A /* TabBarModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModels.swift; sourceTree = "<group>"; };
 		88B0BFF524C7204A00825E6A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		88B0BFF624C7204A00825E6A /* TabBarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarInteractor.swift; sourceTree = "<group>"; };
-		88B0BFFE24C7214400825E6A /* AllTeamsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTeamsPresenter.swift; sourceTree = "<group>"; };
-		88B0BFFF24C7214400825E6A /* AllTeamsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTeamsWorker.swift; sourceTree = "<group>"; };
-		88B0C00024C7214400825E6A /* AllTeamsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTeamsRouter.swift; sourceTree = "<group>"; };
-		88B0C00124C7214400825E6A /* AllTeamsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTeamsModels.swift; sourceTree = "<group>"; };
-		88B0C00224C7214400825E6A /* AllTeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTeamsViewController.swift; sourceTree = "<group>"; };
-		88B0C00324C7214400825E6A /* AllTeamsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTeamsInteractor.swift; sourceTree = "<group>"; };
+		88B0BFFE24C7214400825E6A /* CreditsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsPresenter.swift; sourceTree = "<group>"; };
+		88B0C00024C7214400825E6A /* CreditsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsRouter.swift; sourceTree = "<group>"; };
+		88B0C00124C7214400825E6A /* CreditsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsModels.swift; sourceTree = "<group>"; };
+		88B0C00224C7214400825E6A /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		88B0C00324C7214400825E6A /* CreditsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsInteractor.swift; sourceTree = "<group>"; };
 		88B0C00C24C7291200825E6A /* Gateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gateway.swift; sourceTree = "<group>"; };
 		88B0C00E24C7292400825E6A /* GatewayInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayInstance.swift; sourceTree = "<group>"; };
 		88B0C01024C72D9C00825E6A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -360,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				888021A624D5C0AD0002D5F2 /* PlayerDetails */,
-				88B0BFFD24C7212100825E6A /* AllTeams */,
+				88B0BFFD24C7212100825E6A /* Credits */,
 				88B0BFE324C71FBE00825E6A /* LeagueTable */,
 				88B0BFF024C7203A00825E6A /* TabBar */,
 				88A283FF24D4835900B403DA /* TeamDetails */,
@@ -395,17 +393,16 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		88B0BFFD24C7212100825E6A /* AllTeams */ = {
+		88B0BFFD24C7212100825E6A /* Credits */ = {
 			isa = PBXGroup;
 			children = (
-				88B0BFFE24C7214400825E6A /* AllTeamsPresenter.swift */,
-				88B0BFFF24C7214400825E6A /* AllTeamsWorker.swift */,
-				88B0C00024C7214400825E6A /* AllTeamsRouter.swift */,
-				88B0C00124C7214400825E6A /* AllTeamsModels.swift */,
-				88B0C00224C7214400825E6A /* AllTeamsViewController.swift */,
-				88B0C00324C7214400825E6A /* AllTeamsInteractor.swift */,
+				88B0BFFE24C7214400825E6A /* CreditsPresenter.swift */,
+				88B0C00024C7214400825E6A /* CreditsRouter.swift */,
+				88B0C00124C7214400825E6A /* CreditsModels.swift */,
+				88B0C00224C7214400825E6A /* CreditsViewController.swift */,
+				88B0C00324C7214400825E6A /* CreditsInteractor.swift */,
 			);
-			path = AllTeams;
+			path = Credits;
 			sourceTree = "<group>";
 		};
 		88B0C00A24C728B500825E6A /* Network */ = {
@@ -709,12 +706,12 @@
 				88B0C02224C7448600825E6A /* APIRequest.swift in Sources */,
 				888021AD24D5C1000002D5F2 /* PlayerDetailsInteractor.swift in Sources */,
 				88B0C02024C743B700825E6A /* URL+URLQueryItem.swift in Sources */,
-				88B0C00924C7214400825E6A /* AllTeamsInteractor.swift in Sources */,
+				88B0C00924C7214400825E6A /* CreditsInteractor.swift in Sources */,
 				88CC9C8924D566C0009552B7 /* Pager.swift in Sources */,
 				888021B424D5C3670002D5F2 /* UIStackView+StatViewModels.swift in Sources */,
 				88B0BFEF24C71FD100825E6A /* LeagueTableInteractor.swift in Sources */,
 				88A2841B24D54AB000B403DA /* ErrorView.swift in Sources */,
-				88B0C00624C7214400825E6A /* AllTeamsRouter.swift in Sources */,
+				88B0C00624C7214400825E6A /* CreditsRouter.swift in Sources */,
 				88B0C01D24C7438200825E6A /* GatewayEndpoint.swift in Sources */,
 				88D7E24424C75D6300C728F7 /* Loadable.swift in Sources */,
 				88FDBD6C24D594AE00B61AE8 /* PlayerTableCell.swift in Sources */,
@@ -736,7 +733,7 @@
 				88B0C00F24C7292400825E6A /* GatewayInstance.swift in Sources */,
 				88A3049B24C76AC3005C0609 /* TextStyleConfig.swift in Sources */,
 				88B0BFFA24C7204A00825E6A /* TabBarModels.swift in Sources */,
-				88B0C00424C7214400825E6A /* AllTeamsPresenter.swift in Sources */,
+				88B0C00424C7214400825E6A /* CreditsPresenter.swift in Sources */,
 				88B0BFEE24C71FD100825E6A /* LeagueTableViewController.swift in Sources */,
 				888021AF24D5C1000002D5F2 /* PlayerDetailsModels.swift in Sources */,
 				88CC9C9424D5850A009552B7 /* StatViewModel.swift in Sources */,
@@ -745,8 +742,8 @@
 				88D7E23B24C74C8500C728F7 /* LeagueTableTeamResponse.swift in Sources */,
 				88A2840824D4839700B403DA /* TeamsDetailsRouter.swift in Sources */,
 				88B0BFEA24C71FD100825E6A /* LeagueTablePresenter.swift in Sources */,
-				88B0C00724C7214400825E6A /* AllTeamsModels.swift in Sources */,
-				88B0C00824C7214400825E6A /* AllTeamsViewController.swift in Sources */,
+				88B0C00724C7214400825E6A /* CreditsModels.swift in Sources */,
+				88B0C00824C7214400825E6A /* CreditsViewController.swift in Sources */,
 				888021B224D5C1000002D5F2 /* PlayerDetailsViewController.swift in Sources */,
 				88D7E23724C74B8B00C728F7 /* DataResponse.swift in Sources */,
 				88B0C01124C72D9C00825E6A /* Request.swift in Sources */,
@@ -765,7 +762,6 @@
 				88A2840624D4839700B403DA /* TeamsDetailsViewController.swift in Sources */,
 				88D7E23924C74C4100C728F7 /* LeagueTableResponse.swift in Sources */,
 				88A2840E24D4859D00B403DA /* TeamDetailsListResponse.swift in Sources */,
-				88B0C00524C7214400825E6A /* AllTeamsWorker.swift in Sources */,
 				888021B024D5C1000002D5F2 /* PlayerDetailsRouter.swift in Sources */,
 				88CC9C8724D563C0009552B7 /* LeaguePlayersResponse.swift in Sources */,
 				88B0BFF824C7204A00825E6A /* TabBarWorker.swift in Sources */,
