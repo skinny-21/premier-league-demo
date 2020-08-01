@@ -23,6 +23,7 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
 
     // MARK: - Subviews
 
+    private let backButton = UIBarButtonItem(image: UIImage(named: "back_button_icon"), style: .plain, target: nil, action: nil)
     private let favouritesButton = UIBarButtonItem(image: UIImage(), style: .plain, target: nil, action: nil)
     private let imageView = UIImageView()
     private let topContainer = UIStackView()
@@ -76,6 +77,10 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
     // MARK: - Subviews setup
 
     func setup() {
+        backButton.target = self
+        backButton.action = #selector(backButtonAction)
+        navigationItem.leftBarButtonItem = backButton
+
         favouritesButton.target = self
         favouritesButton.action = #selector(favouritesButtonAction)
         navigationItem.rightBarButtonItem = favouritesButton
@@ -188,6 +193,11 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
             statView.setViewModel($0)
             stackView.addArrangedSubview(statView)
         }
+    }
+
+    @objc
+    private func backButtonAction() {
+        router?.routeBack()
     }
 
     @objc

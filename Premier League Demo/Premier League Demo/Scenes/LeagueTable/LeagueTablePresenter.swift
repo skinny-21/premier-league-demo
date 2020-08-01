@@ -12,6 +12,7 @@ protocol LeagueTablePresentationLogic {
     func presentContent(response: LeagueTable.Content.Response)
     func presentTeamImage(response: LeagueTable.TeamImage.Response)
     func presentToggledFavouriteTeam(response: LeagueTable.Favourite.Response)
+    func presentRefreshedFavouriteTeam(response: LeagueTable.RefreshFavourite.Response)
     func presentTeamDetails(response: LeagueTable.Details.Response)
 }
 
@@ -46,7 +47,14 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
             cellViewModel: response.teamModel.leagueCellViewModel)
         viewController?.displayToggledFavouriteTeam(viewModel: viewModel)
     }
-    
+
+    func presentRefreshedFavouriteTeam(response: LeagueTable.RefreshFavourite.Response) {
+        let viewModel = LeagueTable.RefreshFavourite.ViewModel(
+            index: response.index,
+            cellViewModel: response.teamModel.leagueCellViewModel)
+        viewController?.displayRefreshedFavouriteTeam(viewModel: viewModel)
+    }
+
     func presentTeamDetails(response: LeagueTable.Details.Response) {
         viewController?.displayTeamDetails(viewModel: LeagueTable.Details.ViewModel())
     }

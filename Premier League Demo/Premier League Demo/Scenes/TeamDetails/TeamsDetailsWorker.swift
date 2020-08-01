@@ -11,7 +11,6 @@ import UIKit
 protocol TeamDetailsWorkerProtocol {
     var gateway: Gateway? { get set }
     func getTeamDetails(teamId: Int, completion: @escaping (_ players: [Player], _ stats: [String: Stat]) -> Void)
-    func isTeamFavourite(teamId: Int) -> Bool
     func toggleFavouriteTeam(teamId: Int) -> Bool
 }
 
@@ -52,12 +51,8 @@ class TeamDetailsWorker: TeamDetailsWorkerProtocol {
         }
     }
 
-    func isTeamFavourite(teamId: Int) -> Bool {
-        return localStorage.isFavourite(id: teamId)
-    }
-
     func toggleFavouriteTeam(teamId: Int) -> Bool {
-        let isFavouriteUpdated = !isTeamFavourite(teamId: teamId)
+        let isFavouriteUpdated = !localStorage.isFavourite(id: teamId)
         localStorage.saveToFavourites(id: teamId, isFavourite: isFavouriteUpdated)
         return isFavouriteUpdated
     }

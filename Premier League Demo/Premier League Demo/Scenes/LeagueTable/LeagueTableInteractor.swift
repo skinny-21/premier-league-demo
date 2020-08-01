@@ -13,11 +13,12 @@ protocol LeagueTableBusinessLogic {
     func getTeamImage(request: LeagueTable.TeamImage.Request)
     func toggleFavouriteTeam(request: LeagueTable.Favourite.Request)
     func teamDetails(request: LeagueTable.Details.Request)
+    func refreshFavourite(request: LeagueTable.RefreshFavourite.Request)
 }
 
 protocol LeagueTableDataStore: class {
     var gateway: Gateway? { get set }
-    var selectedTeamModel: TeamModel? { get }
+    var selectedTeamModel: TeamModel? { get set }
     var selectedTeamImageData: Data? { get }
 }
 
@@ -94,5 +95,20 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
         selectedTeamModel = teamModel
         selectedTeamImageData = teamsImagesData[teamModel.id]
         presenter?.presentTeamDetails(response: LeagueTable.Details.Response())
+    }
+
+
+    func refreshFavourite(request: LeagueTable.RefreshFavourite.Request) {
+        guard let selectedTeamModel = selectedTeamModel else {
+            return
+        }
+
+        guard let teamIndex = leagueTable.firstIndex(where: { $0.id == selectedTeamModel.id }) else {
+            return
+        }
+
+        leagueTable[teamIndex] = selectedTeamModel
+        let response = LeagueTable.RefreshFavourite.Response(index: teamIndex, teamModel: leagueTable[teamIndex])
+        presenter?.presentRefreshedFavouriteTeam(response: response)
     }
 }

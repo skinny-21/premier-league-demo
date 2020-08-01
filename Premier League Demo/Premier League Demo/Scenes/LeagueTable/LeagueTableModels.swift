@@ -63,4 +63,18 @@ enum LeagueTable {
         struct Response {}
         struct ViewModel {}
     }
+
+    enum RefreshFavourite {
+        struct Request {}
+
+        struct Response {
+            let index: Int
+            let teamModel: TeamModel
+        }
+
+        struct ViewModel {
+            let index: Int
+            let cellViewModel: LeagueTeamTableCellViewModel
+        }
+    }
 }

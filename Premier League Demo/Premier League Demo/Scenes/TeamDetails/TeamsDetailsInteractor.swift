@@ -12,7 +12,6 @@ protocol TeamDetailsBusinessLogic {
     func prepareContent(request: TeamDetails.Content.Request)
     func getDetails(requset: TeamDetails.Details.Request)
     func toggleFavouriteTeam(request: TeamDetails.Favourite.Request)
-
 }
 
 protocol TeamDetailsDataStore: class {
@@ -49,11 +48,7 @@ class TeamDetailsInteractor: TeamDetailsBusinessLogic, TeamDetailsDataStore {
     func prepareContent(request: TeamDetails.Content.Request) {
         worker?.gateway = gateway
 
-        var isFavourite = false
-        if let teamId = selectedTeamModel?.id {
-            isFavourite = worker?.isTeamFavourite(teamId: teamId) ?? false
-        }
-
+        let isFavourite = selectedTeamModel?.isFavourite ?? false
         let scene: TeamDetails.Content.Scene = selectedTeamModel != nil ? .content : .error
         let response = TeamDetails.Content.Response(scene: scene,
                                                     teamModel: selectedTeamModel,
@@ -87,6 +82,7 @@ class TeamDetailsInteractor: TeamDetailsBusinessLogic, TeamDetailsDataStore {
         }
 
         let isFavaouriteUpdated = worker.toggleFavouriteTeam(teamId: teamId)
+        selectedTeamModel?.isFavourite = isFavaouriteUpdated
         let response = TeamDetails.Favourite.Response(isFavourite: isFavaouriteUpdated)
         presenter?.presentToggledFavouriteTeam(response: response)
     }
