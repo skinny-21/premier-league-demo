@@ -29,4 +29,16 @@ enum TeamDetails {
             case error
         }
     }
+    
+    enum Details {
+        struct Request {}
+
+        struct Response {
+        
+        }
+
+        struct ViewModel {
+      
+        }
+    }
 }

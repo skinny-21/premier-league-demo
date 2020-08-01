@@ -10,6 +10,7 @@ import UIKit
 
 protocol TeamDetailsBusinessLogic {
     func prepareContent(request: TeamDetails.Content.Request)
+    func getDetails(requset: TeamDetails.Details.Request)
 }
 
 protocol TeamDetailsDataStore: class {
@@ -47,5 +48,14 @@ class TeamDetailsInteractor: TeamDetailsBusinessLogic, TeamDetailsDataStore {
                                                     teamModel: selectedTeamModel,
                                                     teamImageData: selectedTeamImageData)
         presenter?.presentContent(response: response)
+    }
+    
+    func getDetails(requset: TeamDetails.Details.Request) {
+        gateway?.getTeamStats(teamId: selectedTeamModel!.id, completionHandler: { (response, error) in
+            print(response?.data.first?.lastMatchesCount)
+            print(response?.data.first?.name)
+            print(response?.data.first?.id)
+            print(response?.data.first?.stats.count)
+        })
     }
 }

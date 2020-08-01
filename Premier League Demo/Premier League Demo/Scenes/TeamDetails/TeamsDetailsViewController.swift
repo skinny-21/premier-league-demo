@@ -67,6 +67,7 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
 
     func displayContent(viewModel: TeamDetails.Content.ViewModel) {
         navigationItem.title = viewModel.title
+        interactor?.getDetails(requset: TeamDetails.Details.Request())
     }
     
     // MARK: - View Controller Logic

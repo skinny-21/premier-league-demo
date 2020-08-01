@@ -57,7 +57,8 @@ extension GatewayInstance: Gateway {
         makeJSONRequest(urlRequest: urlRequest, apiResponse: DataResponse(), completionHandler: completionHandler, urlCache: urlCache)
     }
     
-    func getTeamDetails(completionHandler: @escaping ResponseHandler<TeamDetailsListResponse>) {
-        
+    func getTeamStats(teamId: Int, completionHandler: @escaping ResponseHandler<TeamStatsResponse>) {
+        let urlRequest = createURLRequest(endpoint: .teamStats(teamId: teamId))
+        makeJSONRequest(urlRequest: urlRequest, apiResponse: JSONResponse(), completionHandler: completionHandler)
     }
 }

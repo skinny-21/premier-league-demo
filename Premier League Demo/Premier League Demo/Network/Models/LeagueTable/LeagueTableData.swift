@@ -10,4 +10,8 @@ import Foundation
 
 struct LeagueTableData: Decodable {
     let leagueTable: [LeagueTableTeamResponse]
+    
+    enum CodingKeys: String, CodingKey {
+        case leagueTable = "league_table"
+    }
 }

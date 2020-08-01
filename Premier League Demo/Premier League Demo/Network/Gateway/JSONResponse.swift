@@ -13,7 +13,6 @@ struct JSONResponse<Response: Decodable>: APIResponse {
 
     func response(for data: Data) throws -> ResponseType {
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
         return try decoder.decode(ResponseType.self, from: data)
     }
 }
