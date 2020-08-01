@@ -62,4 +62,12 @@ enum TeamDetails {
             let favouriteButtonImage: UIImage?
         }
     }
+
+    enum PlayerDetails {
+        struct Request {
+            let index: Int
+        }
+        struct Response {}
+        struct ViewModel {}
+    }
 }

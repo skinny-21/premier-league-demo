@@ -12,6 +12,7 @@ protocol TeamDetailsPresentationLogic {
     func presentContent(response: TeamDetails.Content.Response)
     func presentDetails(response: TeamDetails.Details.Response)
     func presentToggledFavouriteTeam(response: TeamDetails.Favourite.Response)
+    func presentPlayerDetails(response: TeamDetails.PlayerDetails.Response)
 }
 
 class TeamDetailsPresenter: TeamDetailsPresentationLogic {
@@ -68,6 +69,10 @@ class TeamDetailsPresenter: TeamDetailsPresentationLogic {
         viewController?.displayToggledFavouriteTeam(viewModel: viewModel)
     }
 
+    func presentPlayerDetails(response: TeamDetails.PlayerDetails.Response) {
+        viewController?.displayPlayerDetails(viewModel: TeamDetails.PlayerDetails.ViewModel())
+    }
+
     private func favouriteButtonImage(isFavourite: Bool) -> UIImage? {
         let imageName = isFavourite ? "fav_selected" : "fav_deselected"
         return UIImage(named: imageName)
@@ -77,24 +82,4 @@ class TeamDetailsPresenter: TeamDetailsPresentationLogic {
 struct PlayersSection {
     let positionName: String
     let playerNames: [String]
-}
-
-private extension Array where Element == StatViewModel {
-    mutating func appendRankItem(title: String, value: Int?) {
-        appendStatItem(title: title, value: value, titleStyle: .statTitleSmall, valueStyle: .statValueBig)
-    }
-
-    mutating func appendSummaryItem(title: String, value: Int?) {
-        appendStatItem(title: title, value: value, titleStyle: .statTitleSmall, valueStyle: .statValueSmall)
-    }
-
-    mutating func appendFormItem(title: String, value: Int?) {
-        appendStatItem(title: title, value: value, titleStyle: .statTitleBig, valueStyle: .statValueBig)
-    }
-
-    private mutating func appendStatItem(title: String, value: Int?, titleStyle: TextStyle, valueStyle: TextStyle) {
-        if let value = value {
-            self.append(StatViewModel(title: title, value: "\(value)", titleStyle: titleStyle, valueStyle: valueStyle))
-        }
-    }
 }

@@ -26,7 +26,7 @@ class ErrorView: UIView {
     
     private let stackView = UIStackView()
     private let titleLabel = UILabel()
-    private let retryButton = UIButton()
+    private let retryButton = UIButton.commonButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,12 +47,8 @@ class ErrorView: UIView {
         [titleLabel, retryButton].forEach(stackView.addArrangedSubview)
 
         titleLabel.setTextStyle(.textLeading)
-        
-        retryButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+
         retryButton.setTitle("Try again", for: .normal)
-        retryButton.setContentCompressionResistancePriority(.required, for: .horizontal)
-        retryButton.setTextStyle(.button)
-        retryButton.backgroundColor = .buttonBackground
         retryButton.addTarget(self, action: #selector(retryButtonAction), for: .touchUpInside)
         
         NSLayoutConstraint.activate([

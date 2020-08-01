@@ -10,6 +10,7 @@ import UIKit
 
 protocol TeamDetailsRoutingLogic {
     func routeBack()
+    func routeToPlayerDetails()
 }
 
 protocol TeamDetailsDataPassing {
@@ -33,5 +34,11 @@ class TeamDetailsRouter: TeamDetailsRoutingLogic, TeamDetailsDataPassing {
         if let leagueTableViewController = viewController?.navigationController?.topViewController as? LeagueTableViewController {
             leagueTableViewController.router?.dataStore?.selectedTeamModel = dataStore?.selectedTeamModel
         }
+    }
+
+    func routeToPlayerDetails() {
+        let playerDetailsViewController = PlayerDetailsViewController()
+        playerDetailsViewController.router?.dataStore?.player = dataStore?.selectedPlayer
+        viewController?.navigationController?.present(playerDetailsViewController, animated: true, completion: nil)
     }
 }

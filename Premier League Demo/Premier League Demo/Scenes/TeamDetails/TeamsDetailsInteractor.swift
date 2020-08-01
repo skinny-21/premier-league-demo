@@ -12,12 +12,14 @@ protocol TeamDetailsBusinessLogic {
     func prepareContent(request: TeamDetails.Content.Request)
     func getDetails(requset: TeamDetails.Details.Request)
     func toggleFavouriteTeam(request: TeamDetails.Favourite.Request)
+    func getPlayerDetails(requset: TeamDetails.PlayerDetails.Request)
 }
 
 protocol TeamDetailsDataStore: class {
     var gateway: Gateway? { get set }
     var selectedTeamModel: TeamModel? { get set }
     var selectedTeamImageData: Data? { get set }
+    var selectedPlayer: Player? { get set }
 }
 
 class TeamDetailsInteractor: TeamDetailsBusinessLogic, TeamDetailsDataStore {
@@ -27,6 +29,7 @@ class TeamDetailsInteractor: TeamDetailsBusinessLogic, TeamDetailsDataStore {
     var gateway: Gateway?
     var selectedTeamModel: TeamModel?
     var selectedTeamImageData: Data?
+    var selectedPlayer: Player?
 
     // MARK: - Internal properties
 
@@ -85,6 +88,15 @@ class TeamDetailsInteractor: TeamDetailsBusinessLogic, TeamDetailsDataStore {
         selectedTeamModel?.isFavourite = isFavaouriteUpdated
         let response = TeamDetails.Favourite.Response(isFavourite: isFavaouriteUpdated)
         presenter?.presentToggledFavouriteTeam(response: response)
+    }
+
+    func getPlayerDetails(requset: TeamDetails.PlayerDetails.Request) {
+        guard players.indices.contains(requset.index) else {
+            return
+        }
+
+        selectedPlayer = players[requset.index]
+        presenter?.presentPlayerDetails(response: TeamDetails.PlayerDetails.Response())
     }
 }
 

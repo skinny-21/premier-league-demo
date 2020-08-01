@@ -12,6 +12,7 @@ protocol TeamDetailsDisplayLogic: class {
     func displayContent(viewModel: TeamDetails.Content.ViewModel)
     func displayDetails(viewModel: TeamDetails.Details.ViewModel)
     func displayToggledFavouriteTeam(viewModel: TeamDetails.Favourite.ViewModel)
+    func displayPlayerDetails(viewModel: TeamDetails.PlayerDetails.ViewModel)
 }
 
 class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Loadable {
@@ -72,6 +73,11 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
         super.viewDidLoad()
         setup()
         prepareContent()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     // MARK: - Subviews setup
@@ -153,15 +159,14 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
             imageView.image = image
         }
 
-        addStatItems(viewModel.rankItems, to: rankStackView)
-        addStatItems(viewModel.summaryItems, to: summaryStackView)
-
+        rankStackView.addStatItems(viewModel.rankItems)
+        summaryStackView.addStatItems(viewModel.summaryItems)
         interactor?.getDetails(requset: TeamDetails.Details.Request())
     }
 
     func displayDetails(viewModel: TeamDetails.Details.ViewModel) {
         DispatchQueue.main.async {
-            self.addStatItems(viewModel.formItems, to: self.formStackView)
+            self.formStackView.addStatItems(viewModel.formItems)
             self.formTitleLabel.isHidden = viewModel.formItems.isEmpty
             self.playersCellViewModels = viewModel.playersCellViewModels
             self.tableView.isHidden = viewModel.playersCellViewModels.isEmpty
@@ -175,24 +180,15 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
         favouritesButton.image = viewModel.favouriteButtonImage
     }
 
+    func displayPlayerDetails(viewModel: TeamDetails.PlayerDetails.ViewModel) {
+        router?.routeToPlayerDetails()
+    }
+
     // MARK: - View Controller Logic
     
     private func prepareContent() {
         startLoading()
         interactor?.prepareContent(request: TeamDetails.Content.Request())
-    }
-
-    private func addStatItems(_ items: [StatViewModel], to stackView: UIStackView) {
-        stackView.arrangedSubviews.forEach {
-            stackView.removeArrangedSubview($0)
-            $0.removeFromSuperview()
-        }
-
-        items.forEach {
-            let statView = StatView()
-            statView.setViewModel($0)
-            stackView.addArrangedSubview(statView)
-        }
     }
 
     @objc
@@ -227,7 +223,7 @@ extension TeamDetailsViewController: UITableViewDataSource {
 
 extension TeamDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        interactor?.getPlayerDetails(requset: TeamDetails.PlayerDetails.Request(index: indexPath.row))
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

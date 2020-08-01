@@ -35,6 +35,8 @@ class StatView: UIView {
         stackView.spacing = 8
         stackView.axis = .horizontal
         [titleLabel, valueLabel].forEach(stackView.addArrangedSubview)
+        titleLabel.setContentHuggingPriority(.required, for: .horizontal)
+        titleLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor),

@@ -16,6 +16,7 @@ enum TextStyle {
     case statTitleBig
     case statValueSmall
     case statValueBig
+    case header
 
     var config: TextStyleConfig {
         switch self {
@@ -33,6 +34,9 @@ enum TextStyle {
             return TextStyleConfig(color: .primary, size: 12, weight: .bold)
         case .statValueBig:
             return TextStyleConfig(color: .primary, size: 20, weight: .bold)
+        case .header:
+            return TextStyleConfig(color: .primary, size: 26, weight: .bold)
+
         }
     }
 }
