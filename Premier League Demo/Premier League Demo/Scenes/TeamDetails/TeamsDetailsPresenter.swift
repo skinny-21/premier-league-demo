@@ -10,6 +10,7 @@ import UIKit
 
 protocol TeamDetailsPresentationLogic {
     func presentContent(response: TeamDetails.Content.Response)
+    func presentDetails(response: TeamDetails.Details.Response)
 }
 
 class TeamDetailsPresenter: TeamDetailsPresentationLogic {
@@ -42,18 +43,35 @@ class TeamDetailsPresenter: TeamDetailsPresentationLogic {
             errorMessage: "")
         viewController?.displayContent(viewModel: viewModel)
     }
+
+    func presentDetails(response: TeamDetails.Details.Response) {
+        var formItems = [StatViewModel]()
+        formItems.appendFormItem(title: "WON", value: response.lastTenWon)
+        formItems.appendFormItem(title: "DRAWN", value: response.lastTenDrawn)
+        formItems.appendFormItem(title: "LOST", value: response.lastTenLost)
+
+        let viewModel = TeamDetails.Details.ViewModel(formItems: formItems)
+        viewController?.displayDetails(viewModel: viewModel)
+    }
+
 }
 
 private extension Array where Element == StatViewModel {
     mutating func appendRankItem(title: String, value: Int?) {
-        if let value = value {
-            self.append(StatViewModel(title: title, value: "\(value)", titleStyle: .statTitleSmall, valueStyle: .statValueBig))
-        }
+        appendStatItem(title: title, value: value, titleStyle: .statTitleSmall, valueStyle: .statValueBig)
     }
 
     mutating func appendSummaryItem(title: String, value: Int?) {
+        appendStatItem(title: title, value: value, titleStyle: .statTitleSmall, valueStyle: .statValueSmall)
+    }
+
+    mutating func appendFormItem(title: String, value: Int?) {
+        appendStatItem(title: title, value: value, titleStyle: .statTitleBig, valueStyle: .statValueBig)
+    }
+
+    private mutating func appendStatItem(title: String, value: Int?, titleStyle: TextStyle, valueStyle: TextStyle) {
         if let value = value {
-            self.append(StatViewModel(title: title, value: "\(value)", titleStyle: .statTitleSmall, valueStyle: .statValueSmall))
+            self.append(StatViewModel(title: title, value: "\(value)", titleStyle: titleStyle, valueStyle: valueStyle))
         }
     }
 }

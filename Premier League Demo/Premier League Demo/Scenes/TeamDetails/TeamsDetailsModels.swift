@@ -37,11 +37,14 @@ enum TeamDetails {
         struct Request {}
 
         struct Response {
-
+            let players: [Player]
+            let lastTenWon: Int?
+            let lastTenDrawn: Int?
+            let lastTenLost: Int?
         }
 
         struct ViewModel {
-      
+            let formItems: [StatViewModel]
         }
     }
 }

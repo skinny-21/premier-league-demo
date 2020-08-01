@@ -10,6 +10,7 @@ import UIKit
 
 protocol TeamDetailsDisplayLogic: class {
     func displayContent(viewModel: TeamDetails.Content.ViewModel)
+    func displayDetails(viewModel: TeamDetails.Details.ViewModel)
 }
 
 class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Loadable {
@@ -25,6 +26,7 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
     private let topContainer = UIStackView()
     private let rankStackView = UIStackView()
     private let summaryStackView = UIStackView()
+    private let formTitleLabel = UILabel()
     private let formStackView = UIStackView()
     
     // MARK: - Initialization
@@ -67,7 +69,7 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
 
     func setup() {
         view.backgroundColor = .background
-        [imageView, topContainer, formStackView].forEach {
+        [imageView, topContainer, formTitleLabel, formStackView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -80,6 +82,12 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
             topContainer.addArrangedSubview($0)
             $0.distribution = .equalCentering
         }
+
+        formTitleLabel.text = "LAST 10 MATCHES"
+        formTitleLabel.setTextStyle(.text)
+        formTitleLabel.isHidden = true
+
+        formStackView.distribution = .equalCentering
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -92,9 +100,12 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
             topContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
             topContainer.heightAnchor.constraint(lessThanOrEqualTo: imageView.heightAnchor),
             
-            formStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
-            formStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            formStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            formTitleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 32),
+            formTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+
+            formStackView.topAnchor.constraint(equalTo: formTitleLabel.bottomAnchor, constant: 4),
+            formStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            formStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
 
@@ -112,7 +123,15 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
 
         interactor?.getDetails(requset: TeamDetails.Details.Request())
     }
-    
+
+    func displayDetails(viewModel: TeamDetails.Details.ViewModel) {
+        DispatchQueue.main.async {
+            self.addStatItems(viewModel.formItems, to: self.formStackView)
+            self.formTitleLabel.isHidden = viewModel.formItems.isEmpty
+            self.stopLoading()
+        }
+    }
+
     // MARK: - View Controller Logic
     
     private func prepareContent() {
