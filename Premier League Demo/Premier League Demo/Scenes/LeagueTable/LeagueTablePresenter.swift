@@ -12,6 +12,7 @@ protocol LeagueTablePresentationLogic {
     func presentContent(response: LeagueTable.Content.Response)
     func presentTeamImage(response: LeagueTable.TeamImage.Response)
     func presentToggledFavouriteTeam(response: LeagueTable.Favourite.Response)
+    func presentTeamDetails(response: LeagueTable.Details.Response)
 }
 
 class LeagueTablePresenter: LeagueTablePresentationLogic {
@@ -27,18 +28,14 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
             $0.leagueCellViewModel
         }
 
-        let viewModel = LeagueTable.Content.ViewModel(cellViewModels: cellViewModels,
-                                                      shouldShowEmptyStateMessage: response.leagueTable.isEmpty,
-                                                      emptyStateMessage: "Error")
+        let viewModel = LeagueTable.Content.ViewModel(
+            cellViewModels: cellViewModels,
+            shouldShowError: response.leagueTable.isEmpty)
         viewController?.displayContent(viewModel: viewModel)
     }
 
     func presentTeamImage(response: LeagueTable.TeamImage.Response) {
-        var image: UIImage?
-        if let imageData = response.imageData {
-            image = UIImage(data: imageData)
-        }
-
+        let image = UIImage.fromData(data: response.imageData)
         let viewModel = LeagueTable.TeamImage.ViewModel(index: response.index, image: image)
         viewController?.displayTeamImage(viewModel: viewModel)
     }
@@ -48,9 +45,13 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
                                                          cellViewModel: response.teamModel.leagueCellViewModel)
         viewController?.displayToggledFavouriteTeam(viewModel: viewModel)
     }
+    
+    func presentTeamDetails(response: LeagueTable.Details.Response) {
+        viewController?.displayTeamDetails(viewModel: LeagueTable.Details.ViewModel())
+    }
 }
 
-private extension LeagueTable.TeamModel {
+private extension TeamModel {
     var leagueCellViewModel: LeagueTeamTableCellViewModel {
         let goalsAgainst = seasonGoals - seasonGoalDifference
         return LeagueTeamTableCellViewModel(

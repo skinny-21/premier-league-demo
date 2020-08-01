@@ -12,6 +12,7 @@ protocol LeagueTableDisplayLogic: class {
     func displayContent(viewModel: LeagueTable.Content.ViewModel)
     func displayTeamImage(viewModel: LeagueTable.TeamImage.ViewModel)
     func displayToggledFavouriteTeam(viewModel: LeagueTable.Favourite.ViewModel)
+    func displayTeamDetails(viewModel: LeagueTable.Details.ViewModel)
 }
 
 class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Loadable {
@@ -24,6 +25,7 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
     // MARK: - Subviews
 
     private let tableView = UITableView()
+    private let errorView = ErrorView()
 
     // MARK: - Private properties
 
@@ -77,7 +79,7 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
     private func setup() {
         navigationItem.title = "Premier League"
         view.backgroundColor = .background
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isHidden = true
@@ -85,13 +87,23 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
         tableView.backgroundColor = .clear
         tableView.register(LeagueTeamTableCell.self, forCellReuseIdentifier: LeagueTeamTableCell.reuseIdentifier)
         tableView.register(LeagueTableHeader.self, forHeaderFooterViewReuseIdentifier: LeagueTableHeader.reuseIdentifier)
-        view.addSubview(tableView)
+        
+        errorView.isHidden = true
+        errorView.delegate = self
+        
+        [tableView, errorView].forEach {
+            view.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            errorView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 
@@ -103,6 +115,7 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
             self.cellViewModels = viewModel.cellViewModels
             self.tableView.isHidden = viewModel.cellViewModels.isEmpty
             self.tableView.reloadData()
+            self.errorView.isHidden = !viewModel.shouldShowError
         }
     }
 
@@ -118,6 +131,10 @@ class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Load
     func displayToggledFavouriteTeam(viewModel: LeagueTable.Favourite.ViewModel) {
         cellViewModels[viewModel.index] = viewModel.cellViewModel
         tableView.reloadRows(at: [IndexPath(row: viewModel.index, section: 0)], with: .fade)
+    }
+    
+    func displayTeamDetails(viewModel: LeagueTable.Details.ViewModel) {
+        router?.routeToTeamDetails()
     }
 
     // MARK: - View Controller Logic
@@ -154,6 +171,10 @@ extension LeagueTableViewController: UITableViewDataSource {
 }
 
 extension LeagueTableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        interactor?.teamDetails(request: LeagueTable.Details.Request(index: indexPath.row))
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         48
     }
@@ -167,5 +188,13 @@ extension LeagueTableViewController: LeagueTeamTableCellDelegate {
     func leagueTeamTableCell(_ cell: LeagueTeamTableCell, toggleFavourite id: Int, isFavourite: Bool) {
         let request = LeagueTable.Favourite.Request(teamId: id, isFavourite: isFavourite)
         interactor?.toggleFavouriteTeam(request: request)
+    }
+}
+
+extension LeagueTableViewController: ErrorViewDelegate {
+    func errorViewRequestedRetryAction(_ errorView: ErrorView) {
+        startLoading()
+        errorView.isHidden = true
+        interactor?.prepareContent(request: LeagueTable.Content.Request())
     }
 }

@@ -36,6 +36,11 @@ class GatewayInstance {
 
         url.appendQueryItem(URLQueryItem(name: "key", value: apiKey))
         url.appendQueryItem(URLQueryItem(name: "season_id", value: "2012"))
+        
+        endpoint.query?.forEach {
+            url.appendQueryItem($0)
+        }
+        
         return URLRequest(url: url)
     }
 }
@@ -50,5 +55,9 @@ extension GatewayInstance: Gateway {
     func getImage(url: URL, completionHandler: @escaping ResponseHandler<Data>) {
         let urlRequest = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
         makeJSONRequest(urlRequest: urlRequest, apiResponse: DataResponse(), completionHandler: completionHandler, urlCache: urlCache)
+    }
+    
+    func getTeamDetails(completionHandler: @escaping ResponseHandler<TeamDetailsListResponse>) {
+        
     }
 }

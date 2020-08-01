@@ -11,6 +11,7 @@ import Foundation
 enum TextStyle {
     case text
     case textLeading
+    case button
 
     var config: TextStyleConfig {
         switch self {
@@ -18,6 +19,8 @@ enum TextStyle {
             return TextStyleConfig(color: .primary, size: 11, weight: .light)
         case .textLeading:
             return TextStyleConfig(color: .primary, size: 11, weight: .medium)
+        case .button:
+            return TextStyleConfig(color: .buttonTitle, size: 12, weight: .medium)
         }
     }
 }

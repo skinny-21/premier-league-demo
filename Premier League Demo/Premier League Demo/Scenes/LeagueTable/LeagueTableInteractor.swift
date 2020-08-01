@@ -12,10 +12,13 @@ protocol LeagueTableBusinessLogic {
     func prepareContent(request: LeagueTable.Content.Request)
     func getTeamImage(request: LeagueTable.TeamImage.Request)
     func toggleFavouriteTeam(request: LeagueTable.Favourite.Request)
+    func teamDetails(request: LeagueTable.Details.Request)
 }
 
 protocol LeagueTableDataStore: class {
     var gateway: Gateway? { get set }
+    var selectedTeamModel: TeamModel? { get }
+    var selectedTeamImageData: Data? { get }
 }
 
 class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
@@ -23,6 +26,8 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
     // MARK: - LeagueTableDataStore
 
     var gateway: Gateway?
+    var selectedTeamModel: TeamModel?
+    var selectedTeamImageData: Data?
 
     // MARK: - Internal properties
 
@@ -31,7 +36,8 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
 
     // MARK: - Private properties
 
-    private var leagueTable = [LeagueTable.TeamModel]()
+    private var leagueTable = [TeamModel]()
+    private var teamsImagesData = [Int: Data]()
 
     // MARK: - Initialization
 
@@ -57,8 +63,11 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
         }
 
         worker?.getImage(url: imageURL, completion: { [weak self] data in
+            guard let self = self else { return }
+            let teamId = self.leagueTable[request.index].id
+            self.teamsImagesData[teamId] = data
             let response = LeagueTable.TeamImage.Response(index: request.index, imageData: data)
-            self?.presenter?.presentTeamImage(response: response)
+            self.presenter?.presentTeamImage(response: response)
         })
     }
 
@@ -74,5 +83,16 @@ class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
         leagueTable[teamIndex].isFavourite = isFavourite
         let response = LeagueTable.Favourite.Response(index: teamIndex, teamModel: leagueTable[teamIndex])
         presenter?.presentToggledFavouriteTeam(response: response)
+    }
+    
+    func teamDetails(request: LeagueTable.Details.Request) {
+        guard leagueTable.indices.contains(request.index) else {
+            return
+        }
+        
+        let teamModel = leagueTable[request.index]
+        selectedTeamModel = teamModel
+        selectedTeamImageData = teamsImagesData[teamModel.id]
+        presenter?.presentTeamDetails(response: LeagueTable.Details.Response())
     }
 }

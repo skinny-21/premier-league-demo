@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LeagueTableRoutingLogic: class {
-
+    func routeToTeamDetails()
 }
 
 protocol LeagueTableDataPassing: class {
@@ -27,4 +27,16 @@ class LeagueTableRouter: LeagueTableRoutingLogic, LeagueTableDataPassing {
     var dataStore: LeagueTableDataStore?
 
     // MARK: - LeagueTableRoutingLogic
+    
+    func routeToTeamDetails() {
+        let detailsViewController = TeamDetailsViewController()
+        
+        if let detailsDataStore = detailsViewController.router?.dataStore {
+            detailsDataStore.gateway = dataStore?.gateway
+            detailsDataStore.selectedTeamModel = dataStore?.selectedTeamModel
+            detailsDataStore.selectedTeamImageData = dataStore?.selectedTeamImageData
+        }
+        
+        viewController?.navigationController?.pushViewController(detailsViewController, animated: true)
+    }
 }

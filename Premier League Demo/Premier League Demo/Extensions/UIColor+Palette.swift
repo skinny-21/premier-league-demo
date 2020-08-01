@@ -14,4 +14,6 @@ extension UIColor {
     static let secondary = UIColor(named: "secondary") ?? .darkGray
     static let selection = UIColor(named: "selection") ?? .lightGray
     static let background = UIColor(named: "background") ?? .white
+    static let buttonTitle = UIColor(named: "buttonTitle") ?? .white
+    static let buttonBackground = UIColor(named: "accent") ?? .green
 }

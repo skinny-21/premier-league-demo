@@ -8,11 +8,23 @@
 
 import Foundation
 
-enum GatewayEndpoint: String {
-    case leagueTable = "league-tables"
-    case teamDetails = "team"
+enum GatewayEndpoint {
+    case leagueTable
+    case teamDetails(teamId: Int)
 
     var path: String {
-        rawValue
+        switch self {
+        case .leagueTable: return "league-tables"
+        case .teamDetails: return "team"
+        }
+    }
+    
+    var query: [URLQueryItem]? {
+        switch self {
+        case .leagueTable:
+            return nil
+        case .teamDetails(let teamId):
+            return [URLQueryItem(name: "team_id", value: "\(teamId)")]
+        }
     }
 }

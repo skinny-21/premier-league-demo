@@ -18,8 +18,7 @@ enum LeagueTable {
 
         struct ViewModel {
             let cellViewModels: [LeagueTeamTableCellViewModel]
-            let shouldShowEmptyStateMessage: Bool
-            let emptyStateMessage: String
+            let shouldShowError: Bool
         }
     }
 
@@ -55,17 +54,13 @@ enum LeagueTable {
             let cellViewModel: LeagueTeamTableCellViewModel
         }
     }
+    
+    enum Details {
+        struct Request {
+            let index: Int
+        }
 
-    struct TeamModel {
-        let id: Int
-        let position: Int
-        let seasonGoals: Int
-        let points: Int
-        let seasonGoalDifference: Int
-        let matchesPlayed: Int
-        let name: String
-        let cleanName: String
-        var isFavourite: Bool
-        let imageURL: URL?
+        struct Response {}
+        struct ViewModel {}
     }
 }
