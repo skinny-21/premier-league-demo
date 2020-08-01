@@ -63,7 +63,7 @@ class Logger {
         printLog(prefix, "headers: [\(headersArray.joined(separator: ", "))]")
 
         if let data = data, let stringData = String(data: prettyData(from: data), encoding: .utf8) {
-            printLog(prefix, "body: \(stringData)")
+            printLog(prefix, "body: \(stringData.trimmed())")
         }
     }
 
@@ -76,6 +76,14 @@ class Logger {
     func cached(_ urlRequest: URLRequest, _ bodyString: String) {
         let prefix = "🟪 Cached response"
         printLog(prefix, "\(urlRequest.httpMethod ?? "") \(urlRequest.description)")
-        printLog(prefix, "body: \(bodyString)")
+        printLog(prefix, "body: \(bodyString.trimmed())")
+    }
+}
+
+private extension String {
+    func trimmed() -> String {
+        let maxLength = 2048
+        let suffix = count > maxLength ? " (...)" : ""
+        return prefix(maxLength).appending(suffix)
     }
 }

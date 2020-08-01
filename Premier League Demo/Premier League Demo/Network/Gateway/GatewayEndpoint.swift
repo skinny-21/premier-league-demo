@@ -13,12 +13,14 @@ enum GatewayEndpoint {
     #warning("TODO: remove teamDetails")
     case teamDetails(teamId: Int)
     case teamStats(teamId: Int)
+    case leaguePlayers(page: Int)
 
     var path: String {
         switch self {
         case .leagueTable: return "league-tables"
         case .teamDetails: return "team"
         case .teamStats: return "lastx"
+        case .leaguePlayers: return "league-players"
         }
     }
     
@@ -31,6 +33,8 @@ enum GatewayEndpoint {
         case .teamStats(let teamId):
             return [URLQueryItem(name: "team_id", value: "\(teamId)"),
                     URLQueryItem(name: "last_x_match_num", value: "3")]
+        case .leaguePlayers(let page):
+            return [URLQueryItem(name: "page", value: "\(page)")]
         }
     }
 }

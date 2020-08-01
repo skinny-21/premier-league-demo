@@ -51,11 +51,6 @@ class TeamDetailsInteractor: TeamDetailsBusinessLogic, TeamDetailsDataStore {
     }
     
     func getDetails(requset: TeamDetails.Details.Request) {
-        gateway?.getTeamStats(teamId: selectedTeamModel!.id, completionHandler: { (response, error) in
-            print(response?.data.first?.lastMatchesCount)
-            print(response?.data.first?.name)
-            print(response?.data.first?.id)
-            print(response?.data.first?.stats.count)
-        })
+
     }
 }

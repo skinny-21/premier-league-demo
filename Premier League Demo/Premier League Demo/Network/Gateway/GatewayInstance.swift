@@ -61,4 +61,9 @@ extension GatewayInstance: Gateway {
         let urlRequest = createURLRequest(endpoint: .teamStats(teamId: teamId))
         makeJSONRequest(urlRequest: urlRequest, apiResponse: JSONResponse(), completionHandler: completionHandler)
     }
+    
+    func getLeaguePlayers(page: Int, completionHandler: @escaping ResponseHandler<LeaguePlayersResponse>) {
+        let urlRequest = createURLRequest(endpoint: .leaguePlayers(page: page))
+        makeJSONRequest(urlRequest: urlRequest, apiResponse: JSONResponse(), completionHandler: completionHandler, urlCache: urlCache)
+    }
 }
