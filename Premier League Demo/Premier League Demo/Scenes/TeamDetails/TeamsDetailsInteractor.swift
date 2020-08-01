@@ -61,7 +61,9 @@ class TeamDetailsInteractor: TeamDetailsBusinessLogic, TeamDetailsDataStore {
         worker?.getTeamDetails(teamId: teamId, completion: { [weak self] (players, stats) in
             guard let self = self else { return }
 
-            self.players = players
+            self.players = players.sorted(by: {
+                $0.position < $1.position
+            })
             let response = TeamDetails.Details.Response(players: self.players,
                                                         lastTenWon: stats.intValue(for: .lastTenWon),
                                                         lastTenDrawn: stats.intValue(for: .lastTenDrawn),

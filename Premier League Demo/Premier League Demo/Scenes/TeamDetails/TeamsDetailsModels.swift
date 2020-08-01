@@ -45,6 +45,7 @@ enum TeamDetails {
 
         struct ViewModel {
             let formItems: [StatViewModel]
+            let playersCellViewModels: [PlayerTableCellViewModel]
         }
     }
 }

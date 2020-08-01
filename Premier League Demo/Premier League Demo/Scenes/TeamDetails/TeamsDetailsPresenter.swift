@@ -50,10 +50,20 @@ class TeamDetailsPresenter: TeamDetailsPresentationLogic {
         formItems.appendFormItem(title: "DRAWN", value: response.lastTenDrawn)
         formItems.appendFormItem(title: "LOST", value: response.lastTenLost)
 
-        let viewModel = TeamDetails.Details.ViewModel(formItems: formItems)
-        viewController?.displayDetails(viewModel: viewModel)
-    }
+        let playersCellViewModels = response.players.map {
+            PlayerTableCellViewModel(name: $0.fullName, position: $0.position.rawValue)
+        }
 
+        let viewModel = TeamDetails.Details.ViewModel(formItems: formItems,
+                                                      playersCellViewModels: playersCellViewModels)
+        viewController?.displayDetails(viewModel: viewModel)
+
+    }
+}
+
+struct PlayersSection {
+    let positionName: String
+    let playerNames: [String]
 }
 
 private extension Array where Element == StatViewModel {

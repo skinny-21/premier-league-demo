@@ -14,3 +14,20 @@ enum PlayerPosition: String, Decodable {
     case goalkeeper = "Goalkeeper"
     case midfielder = "Midfielder"
 }
+
+extension PlayerPosition {
+    var positionOrder: Int {
+        switch self {
+        case .goalkeeper: return 0
+        case .defender: return 1
+        case .midfielder: return 2
+        case .forward: return 3
+        }
+    }
+}
+
+extension PlayerPosition: Comparable {
+    static func < (lhs: PlayerPosition, rhs: PlayerPosition) -> Bool {
+        lhs.positionOrder < rhs.positionOrder
+    }
+}

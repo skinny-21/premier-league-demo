@@ -28,7 +28,13 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
     private let summaryStackView = UIStackView()
     private let formTitleLabel = UILabel()
     private let formStackView = UIStackView()
-    
+    private let playersTitleLabel = UILabel()
+    private let tableView = UITableView()
+
+    // MARK: - Private
+
+    private var playersCellViewModels = [PlayerTableCellViewModel]()
+
     // MARK: - Initialization
 
     convenience init() {
@@ -69,7 +75,7 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
 
     func setup() {
         view.backgroundColor = .background
-        [imageView, topContainer, formTitleLabel, formStackView].forEach {
+        [imageView, topContainer, formTitleLabel, formStackView, playersTitleLabel, tableView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -86,8 +92,18 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
         formTitleLabel.text = "LAST 10 MATCHES"
         formTitleLabel.setTextStyle(.text)
         formTitleLabel.isHidden = true
-
         formStackView.distribution = .equalCentering
+
+        playersTitleLabel.text = "PLAYERS"
+        playersTitleLabel.setTextStyle(.text)
+        playersTitleLabel.isHidden = true
+
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.isHidden = true
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.register(PlayerTableCell.self, forCellReuseIdentifier: PlayerTableCell.reuseIdentifier)
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -105,7 +121,15 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
 
             formStackView.topAnchor.constraint(equalTo: formTitleLabel.bottomAnchor, constant: 4),
             formStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            formStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            formStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+
+            playersTitleLabel.topAnchor.constraint(equalTo: formStackView.bottomAnchor, constant: 24),
+            playersTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+
+            tableView.topAnchor.constraint(equalTo: playersTitleLabel.bottomAnchor, constant: 4),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 
@@ -128,6 +152,10 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
         DispatchQueue.main.async {
             self.addStatItems(viewModel.formItems, to: self.formStackView)
             self.formTitleLabel.isHidden = viewModel.formItems.isEmpty
+            self.playersCellViewModels = viewModel.playersCellViewModels
+            self.tableView.isHidden = viewModel.playersCellViewModels.isEmpty
+            self.playersTitleLabel.isHidden = self.tableView.isHidden
+            self.tableView.reloadData()
             self.stopLoading()
         }
     }
@@ -150,5 +178,34 @@ class TeamDetailsViewController: UIViewController, TeamDetailsDisplayLogic, Load
             statView.setViewModel($0)
             stackView.addArrangedSubview(statView)
         }
+    }
+}
+
+extension TeamDetailsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        playersCellViewModels.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PlayerTableCell.reuseIdentifier, for: indexPath)
+
+        if let playerCell = cell as? PlayerTableCell {
+            playerCell.setViewModel(playersCellViewModels[indexPath.row])
+            if indexPath.row % 2 == 0 {
+                playerCell.contentView.backgroundColor = .selection
+            }
+        }
+
+        return cell
+    }
+}
+
+extension TeamDetailsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        48
     }
 }
