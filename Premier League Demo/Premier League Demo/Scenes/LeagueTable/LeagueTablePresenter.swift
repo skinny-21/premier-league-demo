@@ -8,15 +8,6 @@
 
 import UIKit
 
-protocol LeagueTablePresentationLogic {
-    func presentContent(response: LeagueTable.Content.Response)
-    func presentTeamImage(response: LeagueTable.TeamImage.Response)
-    func presentToggledFavouriteTeam(response: LeagueTable.Favourite.Response)
-    func presentRefreshedFavouriteTeam(response: LeagueTable.RefreshFavourite.Response)
-    func presentTeamDetails(response: LeagueTable.Details.Response)
-    func presentToggledOnlyFavourites(response: LeagueTable.ToggleFavourites.Response)
-}
-
 class LeagueTablePresenter: LeagueTablePresentationLogic {
 
     // MARK: - LeagueTablePresenter - Internal properties
@@ -30,10 +21,12 @@ class LeagueTablePresenter: LeagueTablePresentationLogic {
             $0.leagueCellViewModel
         }
 
+        let isLeagueTableEmpty = response.leagueTable.isEmpty
+
         let commonViewModel = LeagueTable.CommonViewModel(
             cellViewModels: cellViewModels,
-            shouldShowError: response.leagueTable.isEmpty,
-            errorMessage: "Data could not be retrieved",
+            shouldShowError: isLeagueTableEmpty,
+            errorMessage: isLeagueTableEmpty ? "Data could not be retrieved" : nil,
             shouldHideRetryButton: false)
 
         viewController?.displayContent(viewModel: LeagueTable.Content.ViewModel(

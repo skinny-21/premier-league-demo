@@ -93,7 +93,7 @@ enum LeagueTable {
     struct CommonViewModel {
         let cellViewModels: [LeagueTeamTableCellViewModel]
         let shouldShowError: Bool
-        let errorMessage: String
+        let errorMessage: String?
         let shouldHideRetryButton: Bool
     }
 }

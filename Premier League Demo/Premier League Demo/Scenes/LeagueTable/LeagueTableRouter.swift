@@ -8,14 +8,6 @@
 
 import UIKit
 
-protocol LeagueTableRoutingLogic: class {
-    func routeToTeamDetails()
-}
-
-protocol LeagueTableDataPassing: class {
-    var dataStore: LeagueTableDataStore? { get }
-}
-
 class LeagueTableRouter: LeagueTableRoutingLogic, LeagueTableDataPassing {
 
     // MARK: - Internal properties

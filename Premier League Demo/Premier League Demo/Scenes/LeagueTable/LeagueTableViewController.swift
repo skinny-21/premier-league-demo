@@ -8,15 +8,6 @@
 
 import UIKit
 
-protocol LeagueTableDisplayLogic: class {
-    func displayContent(viewModel: LeagueTable.Content.ViewModel)
-    func displayTeamImage(viewModel: LeagueTable.TeamImage.ViewModel)
-    func displayToggledFavouriteTeam(viewModel: LeagueTable.Favourite.ViewModel)
-    func displayTeamDetails(viewModel: LeagueTable.Details.ViewModel)
-    func displayRefreshedFavouriteTeam(viewModel: LeagueTable.RefreshFavourite.ViewModel)
-    func displayToggledOnlyFavourites(viewModel: LeagueTable.ToggleFavourites.ViewModel)
-}
-
 class LeagueTableViewController: UIViewController, LeagueTableDisplayLogic, Loadable {
 
     // MARK: - LeagueTableViewController - Internal properties

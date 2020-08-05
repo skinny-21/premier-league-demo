@@ -8,13 +8,6 @@
 
 import UIKit
 
-protocol LeagueTableWorkerProtocol {
-    var gateway: Gateway? { get set }
-    func getLeagueTable(completion: @escaping ([TeamModel]) -> Void)
-    func getImage(url: URL, completion: @escaping (Data?) -> Void)
-    func toggleFavouriteTeam(id: Int, isFavourite: Bool) -> Bool
-}
-
 class LeagueTableWorker: LeagueTableWorkerProtocol {
     var gateway: Gateway?
     private let localStorage: LocalStorage

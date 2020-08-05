@@ -8,21 +8,6 @@
 
 import UIKit
 
-protocol LeagueTableBusinessLogic {
-    func prepareContent(request: LeagueTable.Content.Request)
-    func getTeamImage(request: LeagueTable.TeamImage.Request)
-    func toggleFavouriteTeam(request: LeagueTable.Favourite.Request)
-    func teamDetails(request: LeagueTable.Details.Request)
-    func refreshFavourite(request: LeagueTable.RefreshFavourite.Request)
-    func toggleOnlyFavourites(request: LeagueTable.ToggleFavourites.Request)
-}
-
-protocol LeagueTableDataStore: class {
-    var gateway: Gateway? { get set }
-    var selectedTeamModel: TeamModel? { get set }
-    var selectedTeamImageData: Data? { get }
-}
-
 class LeagueTableInteractor: LeagueTableBusinessLogic, LeagueTableDataStore {
 
     // MARK: - LeagueTableDataStore
